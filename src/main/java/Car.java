@@ -67,13 +67,13 @@ abstract class Car implements Moveable {
      * Turns the car one cardinal direction going anticlockwise.
      */
     public void turnLeft() {
-        this.direction = (this.direction + 1) % 4;
+        this.direction = Math.floorMod(this.direction + 1);
     }
     /**
      * Turns the car one cardinal direction going clockwise.
      */
     public void turnRight() {
-        this.direction = (this.direction - 1) % 4;
+        this.direction = Math.floorMod(this.direction - 1);
     }
 
     // Car speed features.
