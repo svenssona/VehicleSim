@@ -64,7 +64,7 @@ abstract class Car implements Moveable {
 	}
     }
     /**
-     * Turns the car one cardinal direction going anticlockwise.
+     * Turns the car one cardinal direction going counterclockwise.
      */
     public void turnLeft() {
         this.direction = (this.direction + 1) % 4;
@@ -77,22 +77,21 @@ abstract class Car implements Moveable {
     }
 
     // Car speed features.
-    // TODO fix this according to lab pm
     void gas(double amount) {
-	if(0 <= amount && amount <= 1) {
+	    if(0 <= amount && amount <= 1) {
 	    incrementSpeed(amount);
-	} else {
+        } else {
             throw new IllegalArgumentException("Argument must be in the interval [0,1].");
-	}
+        }
     }
-    // TODO fix this according to lab pm
     void brake(double amount) {
-	if(0 <= amount && amount <= 1) {
-	    decrementSpeed(amount);
-	} else {
-            throw new IllegalArgumentException("Argument must be in the interval [0,1].");
-	}
+        if(0 <= amount && amount <= 1) {
+            decrementSpeed(amount);
+        } else {
+                throw new IllegalArgumentException("Argument must be in the interval [0,1].");
+        }
     }
+
     double getCurrentSpeed() {
         return currentSpeed;
     }
