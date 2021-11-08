@@ -12,7 +12,7 @@ public class Volvo240 extends Car{
     private final static double trimFactor = 1.25;
 
     /**
-     * Constructs a 100 horse-power, four-doors, black Volvo240.
+     * Constructs a 100 horse-power, four-doors, black Volvo240 with start position in (0, 0).
      */
     public Volvo240(){
         nrDoors = 4;

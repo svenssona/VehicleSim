@@ -74,14 +74,26 @@ abstract class Car implements Moveable {
     }
 
     // Car speed features.
-    void gas(double amount) {
+
+    /**
+     * Speeds up the car.
+     * @param amount Factor increasing the speed, must be interval [0,1].
+     * @throws IllegalArgumentException Thrown when amount is outside the interval [0,1].
+     */
+    public void gas(double amount) {
 	    if(0 <= amount && amount <= 1) {
 	    incrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("Argument must be in the interval [0,1].");
         }
     }
-    void brake(double amount) {
+
+    /**
+     * Slows down the car.
+     * @param amount Factor decreasing the speed, must be interval [0,1].
+     * @throws IllegalArgumentException Thrown when amount is outside the interval [0,1].
+     */
+    public void brake(double amount) {
         if(0 <= amount && amount <= 1) {
             decrementSpeed(amount);
         } else {
