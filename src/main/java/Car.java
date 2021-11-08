@@ -6,6 +6,7 @@ import java.lang.IllegalArgumentException;
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
+ * @version 1.0.0
  */
 abstract class Car implements Moveable {
 
@@ -49,17 +50,13 @@ abstract class Car implements Moveable {
      */
     public void move(){
 	switch (this.direction) {
-	    // North
-	    case 0: this.yPos += this.getCurrentSpeed();
+	    case 0: this.yPos += this.getCurrentSpeed(); // North
 		    break;
-	    // West
-	    case 1: this.xPos -= this.getCurrentSpeed();
+	    case 1: this.xPos -= this.getCurrentSpeed(); // West
 		    break;
-	    // South
-	    case 2: this.yPos -= this.getCurrentSpeed();
+	    case 2: this.yPos -= this.getCurrentSpeed(); // South
 		    break;
-	    // East
-	    case 3: this.xPos += this.getCurrentSpeed();
+	    case 3: this.xPos += this.getCurrentSpeed(); // East
 		    break;
 	}
     }
@@ -95,6 +92,7 @@ abstract class Car implements Moveable {
     double getCurrentSpeed() {
         return currentSpeed;
     }
+
     // Abstract methods that needs to be implemented later.
     abstract double speedFactor();
     abstract void incrementSpeed(double amount);

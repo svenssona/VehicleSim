@@ -1,9 +1,19 @@
 import java.awt.Color;
 
+/**
+ * Object class for constructing a Saab95 with its specific features.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 1.0.0
+ */
 public class Saab95 extends Car{
 
     private boolean turboOn;
-    
+
+    /**
+     * Constructs a 125 horse-power, two-door, red SAAB95 with start position in (0, 0).
+     */
     public Saab95(){
         nrDoors = 2;
         color = Color.red;
@@ -15,25 +25,26 @@ public class Saab95 extends Car{
         yPos = 0.0;
     }
 
-
+    /**
+     * @return the speed factor that determines how fast the speed increases/decreases.
+     */
     double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }
 
+    /**
+     * @param amount by which the speed increases.
+     */
     void incrementSpeed(double amount){
         currentSpeed = Math.min(enginePower, getCurrentSpeed() + speedFactor() * amount);
     }
 
+    /**
+     * @param amount by which the speed decreases.
+     */
     void decrementSpeed(double amount){
         currentSpeed = Math.max(0, getCurrentSpeed() - speedFactor() * amount);
-    }
-
-    public static class main{
-        public static void main(String[] arg) {
-        Volvo240 bil = new Volvo240();
-        System.out.println(bil.getCurrentSpeed());
-        }
     }
 }

@@ -1,15 +1,10 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
-/**
- * Class for testing the possible operations on Saab95.
- */
-class Saab95Test {
-
+class Volvo240Test {
     @Test
     void moveTest() {
-        Saab95 bil = new Saab95();
+        Volvo240 bil = new Volvo240();
         bil.gas(1);
         bil.move();
         assertEquals(1.25, bil.yPos);
@@ -17,14 +12,14 @@ class Saab95Test {
 
     @Test
     void turnLeftTest() {
-        Saab95 bil = new Saab95();
+        Volvo240 bil = new Volvo240();
         bil.turnLeft();
         assertEquals(1, bil.direction);
     }
 
     @Test
     void turnRightTest() {
-        Saab95 bil = new Saab95();
+        Volvo240 bil = new Volvo240();
         bil.turnRight();
         assertEquals(3, bil.direction);
     }
