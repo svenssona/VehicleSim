@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class for testing the possible operations on Volvo240.
+ */
 class Volvo240Test {
     @Test
     void moveEastTest() {

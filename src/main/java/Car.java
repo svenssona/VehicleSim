@@ -90,7 +90,7 @@ abstract class Car implements Moveable {
 
     /**
      * Slows down the car.
-     * @param amount Factor decreasing the speed, must be interval [0,1].
+     * @param amount Factor decreasing the speed, must be in the interval [0,1].
      * @throws IllegalArgumentException Thrown when amount is outside the interval [0,1].
      */
     public void brake(double amount) {
