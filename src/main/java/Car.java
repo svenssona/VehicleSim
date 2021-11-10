@@ -22,26 +22,37 @@ abstract class Car implements Moveable {
     double yPos; // Y position in 2D space of the car.
     int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
 
-    // Car features.
-    int getNrDoors() {
+    // Getters.
+    public int getNrDoors() {
         return nrDoors;
     }
-    Color getColor() {
+    public Color getColor() {
         return color;
     }
-    void setColor(Color color) {
+    public double getEnginePower() {
+        return enginePower;
+    }
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    // Setter.
+    public void setColor(Color color) {
         this.color = color;
     }
 
     // Car engine features.
-    void startEngine() {
+    /**
+     * Starts the engine and sets the current speed to 0.1.
+     */
+    public void startEngine() {
         currentSpeed = 0.1;
     }
-    void stopEngine() {
+    /**
+     * Stops the engine and sets the current speed to 0.
+     */
+    public void stopEngine() {
         currentSpeed = 0;
-    }
-    double getEnginePower() {
-        return enginePower;
     }
 
     // Car position features.
@@ -101,12 +112,21 @@ abstract class Car implements Moveable {
         }
     }
 
-    double getCurrentSpeed() {
-        return currentSpeed;
+    /**
+     * @param amount by which the speed increases.
+     */
+    private void incrementSpeed(double amount) {
+        currentSpeed = Math.min(enginePower, getCurrentSpeed() + speedFactor() * amount);
+    }
+
+    /**
+     * @param amount by which the speed decreases.
+     */
+    private void decrementSpeed(double amount) {
+        currentSpeed = Math.max(0, getCurrentSpeed() - speedFactor() * amount);
     }
 
     // Abstract methods that needs to be implemented later.
     abstract double speedFactor();
-    abstract void incrementSpeed(double amount);
-    abstract void decrementSpeed(double amount);
+
 }
