@@ -23,20 +23,38 @@ abstract class Car implements Moveable {
     int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
 
     // Getters.
+    /**
+     * Returns the number of doors of the car.
+     */
     public int getNrDoors() {
         return nrDoors;
     }
+
+    /**
+     * Returns the color of the car.
+     */
     public Color getColor() {
         return color;
     }
+
+    /**
+     * Returns the engine power of the car.
+     */
     public double getEnginePower() {
         return enginePower;
     }
+    /**
+     * Returns the current speed of the car.
+     */
     public double getCurrentSpeed() {
         return currentSpeed;
     }
 
     // Setter.
+    /**
+     * Sets the color of the car.
+     * @param color The color to set the car to.
+     */
     public void setColor(Color color) {
         this.color = color;
     }
