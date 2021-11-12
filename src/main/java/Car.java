@@ -78,16 +78,16 @@ abstract class Car implements Moveable {
      * Moves the car by the value of speed according to the direction attribute.
      */
     public void move(){
-	switch (this.direction) {
-	    case 0: this.yPos += this.getCurrentSpeed(); // North
-		    break;
-	    case 1: this.xPos -= this.getCurrentSpeed(); // West
-		    break;
-	    case 2: this.yPos -= this.getCurrentSpeed(); // South
-		    break;
-	    case 3: this.xPos += this.getCurrentSpeed(); // East
-		    break;
-	}
+        switch (this.direction) {
+            case 0: this.yPos += this.getCurrentSpeed(); // North
+                break;
+            case 1: this.xPos -= this.getCurrentSpeed(); // West
+                break;
+            case 2: this.yPos -= this.getCurrentSpeed(); // South
+                break;
+            case 3: this.xPos += this.getCurrentSpeed(); // East
+                break;
+        }
     }
     /**
      * Turns the car one cardinal direction going counterclockwise.
@@ -106,7 +106,7 @@ abstract class Car implements Moveable {
 
     /**
      * Speeds up the car.
-     * @param amount Factor increasing the speed, must be interval [0,1].
+     * @param amount Factor increasing the speed, must be in the interval [0,1].
      * @throws IllegalArgumentException Thrown when amount is outside the interval [0,1].
      */
     public void gas(double amount) {
@@ -116,7 +116,6 @@ abstract class Car implements Moveable {
             throw new IllegalArgumentException("Argument must be in the interval [0,1].");
         }
     }
-
     /**
      * Slows down the car.
      * @param amount Factor decreasing the speed, must be in the interval [0,1].
