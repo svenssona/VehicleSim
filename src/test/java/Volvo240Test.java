@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -5,9 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on Volvo240.
  */
 class Volvo240Test {
+    private Volvo240 bil;
+
+    @BeforeEach
+    void newBil() {
+        bil = new Volvo240();
+    }
+
     @Test
     void moveEastTest() {
-        Volvo240 bil = new Volvo240();
         bil.gas(1);
         bil.turnRight();
         bil.move();
@@ -16,7 +23,6 @@ class Volvo240Test {
 
     @Test
     void moveSouthTest() {
-        Volvo240 bil = new Volvo240();
         bil.gas(1);
         bil.turnRight();
         bil.turnRight();
@@ -26,7 +32,6 @@ class Volvo240Test {
 
     @Test
     void moveWestTest() {
-        Volvo240 bil = new Volvo240();
         bil.gas(1);
         bil.turnLeft();
         bil.move();
@@ -34,7 +39,6 @@ class Volvo240Test {
     }
     @Test
     void breakTest() {
-        Volvo240 bil = new Volvo240();
         bil.gas(1);
         bil.brake(1);
         assertEquals(0, bil.currentSpeed);
