@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TDA550LAB1A" />
+        <module name="group-35-project" />
       </profile>
     </annotationProcessing>
   </component>

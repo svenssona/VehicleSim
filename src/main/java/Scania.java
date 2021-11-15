@@ -32,22 +32,35 @@ public class Scania extends Car{
         return enginePower * 0.01 * trimFactor;
     }
 
+
+    /**
+     * Raises the trucks loading bed a desired amount caps out at 70 degrees.
+     * @param deltaAngle
+     */
     public void raiseBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {
-            newAngle = bedAngle + deltaAngle;
-            bedAngle = newAngle < 70 ? newAngle : 70;
+            double newAngle = this.bedAngle + deltaAngle;
+            this.bedAngle = newAngle < 70 ? newAngle : 70;
         }
     }
 
+    /**
+     * Lowers the trucks loading bed a desired amount.
+     * @param deltaAngle
+     */
     public void lowerBed(double deltaAngle) {
-        newAngle = bedAngle - deltaAngle;
-        bedAngle = newAngle > 0 ? newAngle : 0;
+        double newAngle = this.bedAngle - deltaAngle;
+        this.bedAngle = newAngle > 0 ? newAngle : 0;
     }
 
+    /**
+     * Increases the speed of the truck given that our loading bed is safely lowered to 0 degrees.
+     * @param amount Factor increasing the speed, must be in the interval [0,1].
+     */
     @Override
     public void gas(double amount) {
         if (this.bedAngle == 0) {
-            super.gas(amount)
+            super.gas(amount);
         }
     }
 }
