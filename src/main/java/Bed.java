@@ -25,6 +25,14 @@ class Bed {
         this.minAngle = minAngle;
     }
 
+    public double getMaxAngle() {
+        return this.maxAngle;
+    }
+
+    public double getMinAngle() {
+        return this.minAngle;
+    }
+
     /**
      * Raises the trucks loading bed a desired amount caps out at maxAngle degrees.
      * @param deltaAngle
