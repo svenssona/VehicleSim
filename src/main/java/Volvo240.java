@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class Volvo240 extends Car{
+public class Volvo240 extends Car implements Loadable{
 
     private final static double trimFactor = 1.25;
 

@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class Saab95 extends Car{
+public class Saab95 extends Car implements Loadable{
 
     private boolean turboOn;
 
