@@ -102,6 +102,10 @@ abstract class Car implements Moveable {
         this.direction = Math.floorMod(this.direction - 1, 4);
     }
 
+    public void setxPos(double xPos) { this.xPos = xPos; }
+
+    public void setyPos(double yPos) { this.yPos = yPos; }
+
     // Car speed features.
 
     /**
