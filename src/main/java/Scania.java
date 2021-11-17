@@ -10,7 +10,7 @@ import java.awt.Color;
 public class Scania extends Car{
 
     private final static double trimFactor = 1.5;
-    private double bedAngle = 0;
+    private Bed bed = new Bed(70);
 
     /**
      * Constructs a 300 horse-power, two-door, blue Scania with start position in (0, 0).
@@ -32,15 +32,13 @@ public class Scania extends Car{
         return enginePower * 0.01 * trimFactor;
     }
 
-
     /**
      * Raises the trucks loading bed a desired amount caps out at 70 degrees.
      * @param deltaAngle
      */
     public void raiseBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {
-            double newAngle = this.bedAngle + deltaAngle;
-            this.bedAngle = newAngle < 70 ? newAngle : 70;
+            this.bed.raiseBed(deltaAngle);
         }
     }
 
@@ -49,8 +47,7 @@ public class Scania extends Car{
      * @param deltaAngle
      */
     public void lowerBed(double deltaAngle) {
-        double newAngle = this.bedAngle - deltaAngle;
-        this.bedAngle = newAngle > 0 ? newAngle : 0;
+        this.bed.lowerBed(deltaAngle);
     }
 
     /**
@@ -59,12 +56,12 @@ public class Scania extends Car{
      */
     @Override
     public void gas(double amount) {
-        if (this.bedAngle == 0) {
+        if (this.bed.getBedAngle() == 0) {
             super.gas(amount);
         }
     }
 
     public double getBedAngle() {
-        return bedAngle;
+        return this.bed.getBedAngle();
     }
 }
