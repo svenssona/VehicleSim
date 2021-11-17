@@ -1,5 +1,5 @@
 /**
- * Object class for constructing a Scania super with its specific features.
+ * Object class for constructing a loading bed with its specific features.
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
@@ -9,6 +9,7 @@ class Bed {
 
     private double bedAngle = 0;
     private double maxAngle;
+    private double minAngle;
 
     /**
      * Creates a bed with specified max angle in the interval [0, maxAngle].
@@ -16,6 +17,12 @@ class Bed {
      */
     public Bed(double maxAngle) {
         this.maxAngle = maxAngle;
+        this.minAngle = 0;
+    }
+
+    public Bed(double maxAngle, double minAngle) {
+        this.maxAngle = maxAngle;
+        this.minAngle = minAngle;
     }
 
     /**
@@ -33,7 +40,7 @@ class Bed {
      */
     public void lowerBed(double deltaAngle) {
         double newAngle = this.bedAngle - deltaAngle;
-        this.bedAngle = newAngle > 0 ? newAngle : 0;
+        this.bedAngle = newAngle > this.minAngle ? newAngle : this.minAngle;
     }
 
     /**
