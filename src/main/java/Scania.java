@@ -33,7 +33,7 @@ public class Scania extends Car{
     }
 
     /**
-     * Raises the trucks loading bed a desired amount caps out at 70 degrees.
+     * Raises the trucks loading bed a desired amount, caps out at 70 degrees.
      * @param deltaAngle
      */
     public void raiseBed(double deltaAngle) {
@@ -47,7 +47,9 @@ public class Scania extends Car{
      * @param deltaAngle
      */
     public void lowerBed(double deltaAngle) {
-        this.bed.lowerBed(deltaAngle);
+        if (this.getCurrentSpeed() == 0) {
+            this.bed.lowerBed(deltaAngle);
+        }
     }
 
     /**
@@ -56,7 +58,7 @@ public class Scania extends Car{
      */
     @Override
     public void gas(double amount) {
-        if (this.bed.getBedAngle() == 0) {
+        if (this.bed.getBedAngle() == this.bed.getMinAngle()) {
             super.gas(amount);
         }
     }
