@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Stack;
 
 /**
  * Object class for constructing a CarTransport super with its specific features.
@@ -7,12 +8,14 @@ import java.awt.Color;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport extends Car{
+public class CarTransport<T extends Loadable> extends Car{
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
+    private final static int capacity = 7;
     private Bed bed = new Bed(maxAngle, minAngle);
+    private Stack<T> loadedCars;
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
@@ -25,6 +28,52 @@ public class CarTransport extends Car{
         stopEngine();
         xPos = 0.0;
         yPos = 0.0;
+        loadedCars = new Stack<>();
+    }
+
+
+    /**
+     * Adds a car to the car transport.
+     * @param cargo
+     */
+    public void loadCar(T cargo){
+        if (this.getBedAngle() == CarTransport.getMinAngle() && loadedCars.size() <= CarTransport.getCapacity()) {
+            loadedCars.push(cargo);
+            cargo.setXPos(this.xPos);
+            cargo.setYPos(this.yPos - 1);
+        }
+    }
+
+    /**
+     * Unloads a car from the car transport.
+     * @return The unloaded car.
+     */
+    public T unloadCar() throws IllegalStateException {
+        if (this.getBedAngle() == CarTransport.getMinAngle()) {
+            return loadedCars.pop();
+        }
+        throw new IllegalStateException();
+    }
+
+    /**
+     * @return Min angle
+     */
+    public static double getMinAngle() {
+        return minAngle;
+    }
+
+    /**
+     * @return Max angle
+     */
+    public static double getMaxAngle() {
+        return maxAngle;
+    }
+
+    /**
+     * @return Capacity of the car transport.
+     */
+    public static int getCapacity() {
+        return capacity;
     }
 
     /**
@@ -36,7 +85,6 @@ public class CarTransport extends Car{
 
     /**
      * Raises the trucks loading bed a desired amount caps out at 70 degrees.
-     * @param deltaAngle
      */
     public void raiseBed() {
         if (this.getCurrentSpeed() == 0) {
@@ -46,7 +94,6 @@ public class CarTransport extends Car{
 
     /**
      * Lowers the trucks loading bed a desired amount.
-     * @param deltaAngle
      */
     public void lowerBed() {
         this.bed.lowerBed(CarTransport.maxAngle - CarTransport.minAngle);
@@ -58,7 +105,7 @@ public class CarTransport extends Car{
      */
     @Override
     public void gas(double amount) {
-        if (this.bed.getBedAngle() == CarTransport.minAngle) {
+        if (this.bed.getBedAngle() == CarTransport.maxAngle) {
             super.gas(amount);
         }
     }
