@@ -52,6 +52,14 @@ public class CarTransport<T extends Loadable> extends Car{
         throw new IllegalStateException();
     }
 
+    @Override
+    public void move() {
+        super.move();
+        for (T cargo : this.loadedCars) {
+            cargo.setPosition(this.position);
+        }
+    }
+
     /**
      * @return Min angle
      */
