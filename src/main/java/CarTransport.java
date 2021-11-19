@@ -30,9 +30,9 @@ public class CarTransport<T extends Loadable> extends Car{
         loadedCars = new Stack<>();
     }
 
-
+    //  Methods for handling the (un)loading of the cars from the car transport.
     /**
-     * Adds a loadable object to the car transport bed.
+     * Adds a car to the car transport bed.
      * @param cargo
      */
     public void loadCargo(T cargo) {
@@ -109,8 +109,9 @@ public class CarTransport<T extends Loadable> extends Car{
         return enginePower * 0.01 * trimFactor;
     }
 
+    // The car transport can only have in two positions (down or up).
     /**
-     * Raises the trucks loading bed a desired amount caps out at 70 degrees.
+     * Raises the trucks loading bed from the min angle -> max angle.
      */
     public void raiseBed() {
         if (this.getCurrentSpeed() == 0) {
@@ -119,10 +120,12 @@ public class CarTransport<T extends Loadable> extends Car{
     }
 
     /**
-     * Lowers the trucks loading bed a desired amount.
+     * Lowers the trucks loading bed from the max angle -> min angle.
      */
     public void lowerBed() {
-        this.bed.lowerBed(CarTransport.maxAngle - CarTransport.minAngle);
+        if (this.getCurrentSpeed() == 0) {
+            this.bed.lowerBed(CarTransport.maxAngle - CarTransport.minAngle);
+        }
     }
 
     /**
