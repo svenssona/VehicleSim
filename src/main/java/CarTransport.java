@@ -14,8 +14,8 @@ public class CarTransport<T extends Loadable> extends Car{
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    private Bed bed = new Bed(maxAngle, minAngle);
-    private Stack<T> loadedCars;
+    private final Bed bed = new Bed(maxAngle, minAngle);
+    private final Stack<T> loadedCars;
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
@@ -32,7 +32,7 @@ public class CarTransport<T extends Loadable> extends Car{
 
 
     /**
-     * Adds a car to the car transport.
+     * Adds a loadable object to the car transport bed.
      * @param cargo
      */
     public void loadCargo(T cargo) {
@@ -73,6 +73,14 @@ public class CarTransport<T extends Loadable> extends Car{
         }
     }
 
+    // Getters
+    /**
+     *
+     * @return Returns the bed angle for our car transport.
+     */
+    public double getBedAngle() {
+        return this.bed.getBedAngle();
+    }
     /**
      * @return Min angle
      */
@@ -126,9 +134,5 @@ public class CarTransport<T extends Loadable> extends Car{
         if (this.bed.getBedAngle() == CarTransport.maxAngle) {
             super.gas(amount);
         }
-    }
-
-    public double getBedAngle() {
-        return this.bed.getBedAngle();
     }
 }
