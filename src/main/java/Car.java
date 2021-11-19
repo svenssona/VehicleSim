@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.lang.IllegalArgumentException;
 
@@ -18,8 +19,7 @@ abstract class Car implements Moveable {
     double currentSpeed; // The current speed of the car.
     Color color; // Color of the car.
     String modelName; // The car model name.
-    double xPos; // X position in 2D space of the car.
-    double yPos; // Y position in 2D space of the car.
+    double[] position; // Holds (x,y) position of the car.
     int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
 
     // Getters.
@@ -79,13 +79,13 @@ abstract class Car implements Moveable {
      */
     public void move(){
         switch (this.direction) {
-            case 0: this.yPos += this.getCurrentSpeed(); // North
+            case 0: this.position[1] += this.getCurrentSpeed(); // North
                 break;
-            case 1: this.xPos -= this.getCurrentSpeed(); // West
+            case 1: this.position[0] -= this.getCurrentSpeed(); // West
                 break;
-            case 2: this.yPos -= this.getCurrentSpeed(); // South
+            case 2: this.position[1] -= this.getCurrentSpeed(); // South
                 break;
-            case 3: this.xPos += this.getCurrentSpeed(); // East
+            case 3: this.position[0] += this.getCurrentSpeed(); // East
                 break;
         }
     }
@@ -102,10 +102,9 @@ abstract class Car implements Moveable {
         this.direction = Math.floorMod(this.direction - 1, 4);
     }
 
-    public void setXPos(double xPos) { this.xPos = xPos; }
-
-    public void setYPos(double yPos) { this.yPos = yPos; }
-
+    public void setPosition(double[] position) {
+        this.position = position;
+    }
     // Car speed features.
 
     /**
