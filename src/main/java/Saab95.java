@@ -21,8 +21,7 @@ public class Saab95 extends Car implements Loadable{
         turboOn = false;
         modelName = "Saab95";
         stopEngine();
-        xPos = 0.0;
-        yPos = 0.0;
+        position = new double[] {0,0};
     }
 
     /**

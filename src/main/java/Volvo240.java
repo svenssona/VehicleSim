@@ -20,8 +20,7 @@ public class Volvo240 extends Car implements Loadable{
         enginePower = 100;
         modelName = "Volvo240";
         stopEngine();
-        xPos = 0.0;
-        yPos = 0.0;
+        position = new double[] {0,0};
     }
 
     /**

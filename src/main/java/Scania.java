@@ -21,8 +21,7 @@ public class Scania extends Car{
         enginePower = 300;
         modelName = "Scania-super";
         stopEngine();
-        xPos = 0.0;
-        yPos = 0.0;
+        position = new double[] {0,0};
     }
 
     /**

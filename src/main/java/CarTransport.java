@@ -26,8 +26,7 @@ public class CarTransport<T extends Loadable> extends Car{
         enginePower = 300;
         modelName = "CarTransport";
         stopEngine();
-        xPos = 0.0;
-        yPos = 0.0;
+        position = new double[] {0,0};
         loadedCars = new Stack<>();
     }
 
@@ -39,8 +38,6 @@ public class CarTransport<T extends Loadable> extends Car{
     public void loadCar(T cargo){
         if (this.getBedAngle() == CarTransport.getMinAngle() && loadedCars.size() <= CarTransport.getCapacity()) {
             loadedCars.push(cargo);
-            cargo.setXPos(this.xPos);
-            cargo.setYPos(this.yPos - 1);
         }
     }
 
