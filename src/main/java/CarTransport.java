@@ -14,7 +14,7 @@ public class CarTransport<T extends Loadable> extends Car{
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    private final Bed bed = new Bed(maxAngle, minAngle);
+    private final Bed<T> bed = new Bed(maxAngle, capacity, minAngle);
     private final Stack<T> loadedCars;
 
     /**
@@ -36,11 +36,9 @@ public class CarTransport<T extends Loadable> extends Car{
      * @param cargo
      */
     public void loadCargo(T cargo) {
-        // Checks that the ramp is lowered, that the loading deck is not full and that we are in position to load.
-        if (this.getBedAngle() == CarTransport.getMinAngle()
-                && loadedCars.size() <= CarTransport.getCapacity()
-                && Car.distance(this.position, cargo.getPosition()) <= 2) {
-            loadedCars.push(cargo);
+        // Checks that we are in position to load.
+        if (Car.distance(this.position, cargo.getPosition()) <= 2) {
+            this.bed.loadCargo(cargo);
         }
     }
 
@@ -49,20 +47,7 @@ public class CarTransport<T extends Loadable> extends Car{
      * @return The unloaded car.
      */
     public T unloadCargo() throws IllegalStateException {
-        if (this.getBedAngle() == CarTransport.getMinAngle()) {
-            // Handles placing the cargo 1 unit behind the Cartransport.
-            double[] newPosition = this.position.clone();
-            switch (this.direction) {
-                case 0: newPosition[1] += -1; break;
-                case 1: newPosition[0] += 1; break;
-                case 2: newPosition[1] += 1; break;
-                case 3: newPosition[0] += -1; break;
-            }
-            loadedCars.peek().setPosition(newPosition);
-            return loadedCars.pop();
-        } else {
-            throw new IllegalStateException();
-        }
+       return this.bed.unloadCargo(getDirection());
     }
 
     @Override
