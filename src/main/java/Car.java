@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.lang.IllegalArgumentException;
+import java.util.Arrays;
 
 /**
  * This is an abstract class defining the basic functions of a car.
@@ -105,8 +106,21 @@ abstract class Car implements Moveable {
     public void setPosition(double[] position) {
         this.position = position;
     }
-    // Car speed features.
 
+    public double[] getPosition() { return position; }
+
+    // Returns the distance between two points. 
+    public static double distance(double[] pointA, double[] pointB) {
+        double[] temp = new double[pointA.length];
+        Arrays.setAll(temp, i -> pointA[i] - pointB[i]);
+        double squaredDistance = 0.0;
+        for (double num : temp) {
+            squaredDistance += num * num;
+        }
+        return Math.sqrt(squaredDistance);
+    }
+
+    // Car speed features.
     /**
      * Speeds up the car.
      * @param amount Factor increasing the speed, must be in the interval [0,1].

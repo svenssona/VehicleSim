@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.Stack;
+import java2s;
 
 /**
  * Object class for constructing a CarTransport super with its specific features.
@@ -35,8 +36,11 @@ public class CarTransport<T extends Loadable> extends Car{
      * Adds a car to the car transport.
      * @param cargo
      */
-    public void loadCar(T cargo){
-        if (this.getBedAngle() == CarTransport.getMinAngle() && loadedCars.size() <= CarTransport.getCapacity()) {
+    public void loadCar(T cargo) {
+        // Checks that the ramp is lowered, that the loading deck is not full and that we are in position to load.
+        if (this.getBedAngle() == CarTransport.getMinAngle()
+                && loadedCars.size() <= CarTransport.getCapacity()
+                && norm(this.position - cargo.getPostion()) <= 2) {
             loadedCars.push(cargo);
         }
     }
