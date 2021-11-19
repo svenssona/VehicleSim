@@ -27,52 +27,54 @@ abstract class Car implements Moveable {
     /**
      * Returns the number of doors of the car.
      */
-    public int getNrDoors() {
-        return nrDoors;
-    }
+    public int getNrDoors() { return nrDoors; }
 
     /**
      * Returns the color of the car.
      */
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return color; }
 
     /**
      * Returns the engine power of the car.
      */
-    public double getEnginePower() {
-        return enginePower;
-    }
+    public double getEnginePower() { return enginePower; }
     /**
      * Returns the current speed of the car.
      */
-    public double getCurrentSpeed() {
-        return currentSpeed;
-    }
+    public double getCurrentSpeed() { return currentSpeed; }
+
+    /**
+     * Returns the current position of the car.
+     */
+    public double[] getPosition() { return position; }
+
+    /**
+     * Returns the current position of the car.
+     */
+    public int getDirection() { return direction; }
 
     // Setter.
     /**
      * Sets the color of the car.
      * @param color The color to set the car to.
      */
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    public void setColor(Color color) { this.color = color; }
+
+    /**
+     * Sets the position of the car.
+     * @param position The position to set the car to.
+     */
+    public void setPosition(double[] position) { this.position = position; }
 
     // Car engine features.
     /**
      * Starts the engine and sets the current speed to 0.1.
      */
-    public void startEngine() {
-        currentSpeed = 0.1;
-    }
+    public void startEngine() { currentSpeed = 0.1; }
     /**
      * Stops the engine and sets the current speed to 0.
      */
-    public void stopEngine() {
-        currentSpeed = 0;
-    }
+    public void stopEngine() { currentSpeed = 0; }
 
     // Car position features.
     /**
@@ -102,12 +104,6 @@ abstract class Car implements Moveable {
     public void turnRight() {
         this.direction = Math.floorMod(this.direction - 1, 4);
     }
-
-    public void setPosition(double[] position) {
-        this.position = position;
-    }
-
-    public double[] getPosition() { return position; }
 
     // Returns the distance between two points. 
     public static double distance(double[] pointA, double[] pointB) {

@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.util.Stack;
-import java2s;
 
 /**
  * Object class for constructing a CarTransport super with its specific features.
@@ -36,11 +35,11 @@ public class CarTransport<T extends Loadable> extends Car{
      * Adds a car to the car transport.
      * @param cargo
      */
-    public void loadCar(T cargo) {
+    public void loadCargo(T cargo) {
         // Checks that the ramp is lowered, that the loading deck is not full and that we are in position to load.
         if (this.getBedAngle() == CarTransport.getMinAngle()
                 && loadedCars.size() <= CarTransport.getCapacity()
-                && norm(this.position - cargo.getPostion()) <= 2) {
+                && Car.distance(this.position, cargo.getPosition()) <= 2) {
             loadedCars.push(cargo);
         }
     }
@@ -49,11 +48,21 @@ public class CarTransport<T extends Loadable> extends Car{
      * Unloads a car from the car transport.
      * @return The unloaded car.
      */
-    public T unloadCar() throws IllegalStateException {
+    public T unloadCargo() throws IllegalStateException {
         if (this.getBedAngle() == CarTransport.getMinAngle()) {
+            // Handles placing the cargo 1 unit behind the Cartransport.
+            double[] newPosition = this.position.clone();
+            switch (this.direction) {
+                case 0: newPosition[1] += -1; break;
+                case 1: newPosition[0] += 1; break;
+                case 2: newPosition[1] += 1; break;
+                case 3: newPosition[0] += -1; break;
+            }
+            loadedCars.peek().setPosition(newPosition);
             return loadedCars.pop();
+        } else {
+            throw new IllegalStateException();
         }
-        throw new IllegalStateException();
     }
 
     @Override
