@@ -16,7 +16,7 @@ public class Scania<T extends Loadable> extends Car{
     /**
      * Constructs a 300 horse-power, two-door, blue Scania with start position in (0, 0).
      */
-    public Scania(){
+    public Scania() {
         nrDoors = 2;
         color = Color.blue;
         enginePower = 300;

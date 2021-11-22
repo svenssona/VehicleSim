@@ -46,9 +46,7 @@ public class CarTransport<T extends Loadable> extends Car{
      * Unloads a car from the car transport.
      * @return The unloaded car.
      */
-    public T unloadCargo() throws IllegalStateException {
-       return this.bed.unloadCargo(getDirection());
-    }
+    public T unloadCargo() throws IllegalStateException { return this.bed.unloadCargo(getDirection()); }
 
     @Override
     public void move() {
