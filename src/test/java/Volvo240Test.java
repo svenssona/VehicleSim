@@ -18,7 +18,7 @@ class Volvo240Test {
         bil.gas(1);
         bil.turnRight();
         bil.move();
-        assertEquals(1.25, bil.xPos);
+        assertEquals(1.25, bil.position[0]);
     }
 
     @Test
@@ -27,7 +27,7 @@ class Volvo240Test {
         bil.turnRight();
         bil.turnRight();
         bil.move();
-        assertEquals(-1.25, bil.yPos);
+        assertEquals(-1.25, bil.position[1]);
     }
 
     @Test
@@ -35,7 +35,7 @@ class Volvo240Test {
         bil.gas(1);
         bil.turnLeft();
         bil.move();
-        assertEquals(-1.25, bil.xPos);
+        assertEquals(-1.25, bil.position[0]);
     }
     @Test
     void breakTest() {

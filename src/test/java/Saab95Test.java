@@ -21,7 +21,7 @@ class Saab95Test {
     void moveTest() {
         bil.gas(1);
         bil.move();
-        assertEquals(1.25, bil.yPos);
+        assertEquals(1.25, bil.position[1]);
     }
 
     @Test
