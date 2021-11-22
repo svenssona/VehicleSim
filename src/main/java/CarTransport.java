@@ -14,6 +14,7 @@ public class CarTransport<T extends Car & Loadable> extends Car{
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
+    // TODO fixa bed så den kan ta alla bilar.
     private final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
 
     /**
