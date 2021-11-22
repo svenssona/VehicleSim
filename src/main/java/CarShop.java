@@ -38,6 +38,10 @@ public class CarShop <T extends Car> {
         }
     }
 
+    public List<T> getCarsInShop() {
+        return carsInShop;
+    }
+
     /**
      * Repair cars.
      */
