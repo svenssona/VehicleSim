@@ -11,7 +11,7 @@ public class Scania<T extends Loadable> extends Car{
     // TODO Make SCANIA GREAT AGAIN: MAKING IT LOADABLE
 
     private final static double trimFactor = 1.5;
-    private Bed<T> bed = new Bed(70, 10);
+    private Bed<T> bed = new Bed<>(70, 10);
 
     /**
      * Constructs a 300 horse-power, two-door, blue Scania with start position in (0, 0).

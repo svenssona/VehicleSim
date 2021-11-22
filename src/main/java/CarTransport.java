@@ -8,14 +8,13 @@ import java.util.Stack;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport<T extends Loadable> extends Car{
+public class CarTransport<T extends Car & Loadable> extends Car{
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    private final Bed<T> bed = new Bed(maxAngle, capacity, minAngle);
-    private final Stack<T> loadedCars;
+    private final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
@@ -27,7 +26,6 @@ public class CarTransport<T extends Loadable> extends Car{
         modelName = "CarTransport";
         stopEngine();
         position = new double[] {0,0};
-        loadedCars = new Stack<>();
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
@@ -51,7 +49,7 @@ public class CarTransport<T extends Loadable> extends Car{
     @Override
     public void move() {
         super.move();
-        for (T cargo : this.loadedCars) {
+        for (T cargo : this.bed.getCargo()) {
             cargo.setPosition(this.position);
         }
     }

@@ -56,8 +56,20 @@ class Bed <T extends Loadable> {
         return this.minAngle;
     }
 
+    /**
+     *
+     * @return Returns the capacity of the bed.
+     */
     public int getCapacity() {
         return capacity;
+    }
+
+    /** 
+     *
+     * @return Returns the loaded objects.
+     */
+    public Stack<T> getCargo() {
+        return this.loadedObjects;
     }
 
     /**
