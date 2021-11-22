@@ -63,6 +63,10 @@ public class Scania<T extends Loadable> extends Car{
         }
     }
 
+    /**
+     *
+     * @return Returns the currentBedAngle.
+     */
     public double getBedAngle() {
         return this.bed.getBedAngle();
     }
