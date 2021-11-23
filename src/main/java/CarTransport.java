@@ -13,7 +13,7 @@ public class CarTransport<T extends Loadable> extends Car {
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    private final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
+    final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).

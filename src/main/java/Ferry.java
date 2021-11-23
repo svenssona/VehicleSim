@@ -1,12 +1,6 @@
 import java.awt.*;
 
 public class Ferry<T extends Loadable> extends CarTransport<T> {
-
-    private final static double maxAngle = 85;
-    private final static double minAngle = -25;
-    private final static int capacity = 10;
-    private final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
-
     /**
      * Constructs the legendary ferry NightCruiser420 with 1000 hp. It can take up to 10 cars.
      */
