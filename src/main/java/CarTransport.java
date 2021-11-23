@@ -28,6 +28,7 @@ public class CarTransport<T extends Loadable> extends Car {
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
+    //TODO add exception for loadCargo aswell?
     /**
      * Adds a car to the car transport bed.
      *
@@ -42,8 +43,8 @@ public class CarTransport<T extends Loadable> extends Car {
 
     /**
      * Unloads a car from the car transport.
-     *
      * @return The unloaded car.
+     * @throws If the bed is not at the lower position then we can't unload.
      */
     public T unloadCargo() throws IllegalStateException {
         return this.bed.unloadLastCargo(getDirection());
