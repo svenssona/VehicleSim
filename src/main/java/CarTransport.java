@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.util.Stack;
 
 /**
  * Object class for constructing a CarTransport super with its specific features.
@@ -8,44 +7,47 @@ import java.util.Stack;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport<T extends Car & Loadable> extends Car{
+public class CarTransport<T extends Loadable> extends Car {
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    // TODO fixa bed så den kan ta alla bilar.
     private final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
      */
-    public CarTransport(){
+    public CarTransport() {
         nrDoors = 2;
         color = Color.blue;
         enginePower = 300;
         modelName = "CarTransport";
         stopEngine();
-        position = new double[] {0,0};
+        position = new double[] {0, 0};
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
     /**
      * Adds a car to the car transport bed.
-     * @param cargo
+     *
+     * @param cargo Takes in the car you want to load.
      */
     public void loadCargo(T cargo) {
         // Checks that we are in position to load.
         if (Car.distance(this.position, cargo.getPosition()) <= 2) {
-            this.bed.loadCargo(cargo);
+            this.bed.loadCargoLast(cargo);
         }
     }
 
     /**
      * Unloads a car from the car transport.
+     *
      * @return The unloaded car.
      */
-    public T unloadCargo() throws IllegalStateException { return this.bed.unloadCargo(getDirection()); }
+    public T unloadCargo() throws IllegalStateException {
+        return this.bed.unloadLastCargo(getDirection());
+    }
 
     @Override
     public void move() {
@@ -56,13 +58,14 @@ public class CarTransport<T extends Car & Loadable> extends Car{
     }
 
     // Getters
+
     /**
-     *
      * @return Returns the bed angle for our car transport.
      */
     public double getBedAngle() {
         return this.bed.getBedAngle();
     }
+
     /**
      * @return Min angle
      */
@@ -87,11 +90,13 @@ public class CarTransport<T extends Car & Loadable> extends Car{
     /**
      * @return the speed factor that determines how fast the speed increases/decreases.
      */
-    double speedFactor(){
+    @Override
+    double speedFactor() {
         return enginePower * 0.01 * trimFactor;
     }
 
     // The car transport can only have in two positions (down or up).
+
     /**
      * Raises the trucks loading bed from the min angle -> max angle.
      */
@@ -112,6 +117,7 @@ public class CarTransport<T extends Car & Loadable> extends Car{
 
     /**
      * Increases the speed of the truck given that our loading bed is safely lowered to 0 degrees.
+     *
      * @param amount Factor increasing the speed, must be in the interval [0,1].
      */
     @Override

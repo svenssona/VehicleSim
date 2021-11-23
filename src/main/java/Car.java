@@ -106,7 +106,7 @@ abstract class Car implements Moveable {
     }
 
     // Returns the distance between two points. 
-    public static double distance(double[] pointA, double[] pointB) {
+    static double distance(double[] pointA, double[] pointB) {
         double[] temp = new double[pointA.length];
         Arrays.setAll(temp, i -> pointA[i] - pointB[i]);
         double squaredDistance = 0.0;

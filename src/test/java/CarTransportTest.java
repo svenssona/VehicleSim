@@ -7,12 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on CarTransport.
  */
 class CarTransportTest {
-    private CarTransport bil;
+    private CarTransport<Loadable> bil;
 
     @BeforeEach
-    void newBil() {
-        bil = new CarTransport();
-    }
+    void newBil() { bil = new CarTransport<>(); }
 
     @Test
     void raiseBedTest() {
@@ -37,5 +35,14 @@ class CarTransportTest {
     void lowerBedMinTest() {
         bil.lowerBed();
         assertEquals(-20, bil.getBedAngle());
+    }
+
+    @Test
+    void loadDiffCars() {
+        // Makes sure we get a static compile time error when loading a Scania and that we can load both a Volvo240 and
+        // Saab95 at the same time.
+        bil.loadCargo(new Volvo240());
+        bil.loadCargo(new Saab95());
+        // bil.loadCargo(new Scania());
     }
 }

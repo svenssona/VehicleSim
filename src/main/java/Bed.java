@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.LinkedList;
 
 /**
  * Object class for constructing a loading bed with its specific features.
@@ -12,25 +12,32 @@ class Bed <T extends Loadable> {
     private double bedAngle = 0;
     private final double maxAngle;
     private final double minAngle;
-    private final Stack<T> loadedObjects;
+    private final LinkedList<T> loadedObjects;
     private final int capacity;
 
     /**
      * Creates a bed with specified max angle in the interval [0, maxAngle].
-     * @param maxAngle
+     * @param maxAngle Max angle for the specific bed.
+     * @param capacity Max capacity for the specific bed.
      */
     public Bed(double maxAngle, int capacity) {
         this.maxAngle = maxAngle;
         this.capacity = capacity;
         minAngle = 0;
-        loadedObjects = new Stack<>();
+        loadedObjects = new LinkedList<>();
     }
 
+    /**
+     * Creates a bed with specified max angle in the interval [minAngle, maxAngle].
+     * @param maxAngle Max angle for the specific bed.
+     * @param capacity Max capacity for the specific bed.
+     * @param minAngle Min angle for the specific bed.
+     */
     public Bed(double maxAngle, int capacity, double minAngle ) {
         this.maxAngle = maxAngle;
         this.capacity = capacity;
         this.minAngle = minAngle;
-        loadedObjects = new Stack<>();
+        loadedObjects = new LinkedList<>();
     }
 
     /**
@@ -68,7 +75,7 @@ class Bed <T extends Loadable> {
      *
      * @return Returns the loaded objects.
      */
-    public Stack<T> getCargo() {
+    public LinkedList<T> getCargo() {
         return this.loadedObjects;
     }
 
@@ -93,25 +100,36 @@ class Bed <T extends Loadable> {
     }
     // TODO Implement position and direction for all beds.
     /**
-     * Loads a loadable object to our bed stack.
-     * @param cargo A loadable object
+     * Loads a loadable object at the front to our bed queue.
+     * @param cargo A loadable object.
      */
-    public void loadCargo(T cargo) {
+    public void loadCargoFirst(T cargo) {
         // Checks that the ramp is lowered and that the loading deck is not full.
         if (this.getBedAngle() == getMinAngle() && loadedObjects.size() <= getCapacity()) {
-            loadedObjects.push(cargo);
+            loadedObjects.addFirst(cargo);
         }
     }
 
     /**
-     * Unloads the cargo from the loading bed a given direction from the carrier.
+     * Loads a loadable object to the back of our bed queue.
+     * @param cargo
+     */
+    public void loadCargoLast(T cargo) {
+        if (this.getBedAngle() == getMinAngle() && loadedObjects.size() <= getCapacity()) {
+            loadedObjects.addLast(cargo);
+        }
+    }
+
+    /**
+     * Unloads the first object in to the cargo from the loading bed a given direction from the carrier.
      * @param carrierDirection {0 = North, 1 = West, 2 = South, 3 = East}
      * @return Returns the unloaded cargo.
      * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
-    public T unloadCargo(int carrierDirection) throws IllegalStateException {
+    public T unloadFirstCargo(int carrierDirection) throws IllegalStateException {
         if (this.getBedAngle() == getMinAngle()) {
-            double[] newPosition = loadedObjects.peek().getPosition();
+            assert loadedObjects.peekFirst() != null;
+            double[] newPosition = loadedObjects.peekFirst().getPosition();
             // Handles placing cargo one unit behind the carrier.
             switch (carrierDirection) {
                 case 0: newPosition[1] += -1; break;
@@ -120,10 +138,35 @@ class Bed <T extends Loadable> {
                 case 3: newPosition[0] += -1; break;
             }
             // Sets the top object of the stack to the new position for unloading.
-            loadedObjects.peek().setPosition(newPosition);
-            return loadedObjects.pop();
+            assert loadedObjects.peekFirst() != null;
+            loadedObjects.peekFirst().setPosition(newPosition);
+            return loadedObjects.removeFirst();
         } else {
             throw new IllegalStateException();
         }
+    }
+    /**
+     * Unloads the last object in to the cargo from the loading bed a given direction from the carrier.
+     * @param carrierDirection {0 = North, 1 = West, 2 = South, 3 = East}
+     * @return Returns the unloaded cargo.
+     * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
+     */
+    public T unloadLastCargo(int carrierDirection) throws IllegalStateException {
+        if (this.getBedAngle() == getMinAngle()) {
+            assert loadedObjects.peekLast() != null;
+            double[] newPosition = loadedObjects.peekLast().getPosition();
+            // Handles placing cargo one unit behind the carrier.
+            switch (carrierDirection) {
+                case 0: newPosition[1] += -1; break;
+                case 1: newPosition[0] += 1; break;
+                case 2: newPosition[1] += 1; break;
+                case 3: newPosition[0] += -1; break;
+            }
+            // Sets the top object of the stack to the new position for unloading.
+            assert loadedObjects.peekLast() != null;
+            loadedObjects.peekLast().setPosition(newPosition);
+            return loadedObjects.removeLast();
+        } else {
+            throw new IllegalStateException();
     }
 }
