@@ -168,5 +168,6 @@ class Bed <T extends Loadable> {
             return loadedObjects.removeLast();
         } else {
             throw new IllegalStateException();
+        }
     }
 }

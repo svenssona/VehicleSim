@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.lang.IllegalArgumentException;
 import java.util.Arrays;
@@ -22,6 +21,10 @@ abstract class Car implements Moveable {
     String modelName; // The car model name.
     double[] position; // Holds (x,y) position of the car.
     int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
+    private final int NORTH = 0;
+    private final int WEST = 1;
+    private final int SOUTH = 2;
+    private final int EAST = 3;
 
     // Getters.
     /**
@@ -80,15 +83,15 @@ abstract class Car implements Moveable {
     /**
      * Moves the car by the value of speed according to the direction attribute.
      */
-    public void move(){
+    public void move() {
         switch (this.direction) {
-            case 0: this.position[1] += this.getCurrentSpeed(); // North
+            case NORTH: this.position[1] += this.getCurrentSpeed();
                 break;
-            case 1: this.position[0] -= this.getCurrentSpeed(); // West
+            case WEST: this.position[0] -= this.getCurrentSpeed();
                 break;
-            case 2: this.position[1] -= this.getCurrentSpeed(); // South
+            case SOUTH: this.position[1] -= this.getCurrentSpeed();
                 break;
-            case 3: this.position[0] += this.getCurrentSpeed(); // East
+            case EAST: this.position[0] += this.getCurrentSpeed();
                 break;
         }
     }

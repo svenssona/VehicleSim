@@ -24,6 +24,10 @@ public class Saab95 extends Car implements Loadable{
         position = new double[] {0,0};
     }
 
+    public void setTurbo(boolean TurboOn) {
+        this.turboOn = TurboOn;
+    }
+
     /**
      * @return the speed factor that determines how fast the speed increases/decreases.
      */

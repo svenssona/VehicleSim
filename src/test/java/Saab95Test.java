@@ -10,54 +10,54 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on Saab95.
  */
 class Saab95Test {
-    private Saab95 bil;
+    private Saab95 car;
 
     @BeforeEach
-    void newBil() {
-        bil = new Saab95();
+    void newCar() {
+        car = new Saab95();
     }
 
     @Test
     void moveTest() {
-        bil.gas(1);
-        bil.move();
-        assertEquals(1.25, bil.position[1]);
+        car.gas(1);
+        car.move();
+        assertEquals(1.25, car.position[1]);
     }
 
     @Test
     void breakTest() {
-        bil.gas(1);
-        bil.brake(0);
-        assertEquals(1.25, bil.getCurrentSpeed());
+        car.gas(1);
+        car.brake(0);
+        assertEquals(1.25, car.getCurrentSpeed());
     }
 
     @Test
     void doorTest() {
-        assertEquals(2, bil.getNrDoors());
+        assertEquals(2, car.getNrDoors());
     }
     @Test
     void colorTest() {
-        bil.setColor(Color.BLACK);
-        assertEquals(Color.BLACK, bil.getColor());
+        car.setColor(Color.BLACK);
+        assertEquals(Color.BLACK, car.getColor());
     }
     @Test
     void startEngineTest() {
-        bil.startEngine();
-        assertEquals(0.1, bil.getCurrentSpeed());
+        car.startEngine();
+        assertEquals(0.1, car.getCurrentSpeed());
     }
     @Test
     void enginePowerTest() {
-        assertEquals(125, bil.getEnginePower());
+        assertEquals(125, car.getEnginePower());
     }
     @Test
     void turnLeftTest() {
-        bil.turnLeft();
-        assertEquals(1, bil.direction);
+        car.turnLeft();
+        assertEquals(1, car.direction);
     }
 
     @Test
     void turnRightTest() {
-        bil.turnRight();
-        assertEquals(3, bil.direction);
+        car.turnRight();
+        assertEquals(3, car.direction);
     }
 }

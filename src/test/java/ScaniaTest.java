@@ -7,35 +7,35 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on Scania.
  */
 class ScaniaTest {
-    private Scania bil;
+    private Scania car;
 
     @BeforeEach
-    void newBil() {
-        bil = new Scania();
+    void newCar() {
+        car = new Scania();
     }
 
     @Test
     void raiseBedTest() {
-        bil.raiseBed(10);
-        assertEquals(10, bil.getBedAngle());
+        car.raiseBed(10);
+        assertEquals(10, car.getBedAngle());
     }
 
     @Test
     void lowerBedTest() {
-        bil.raiseBed(20);
-        bil.lowerBed(10);
-        assertEquals(10, bil.getBedAngle());
+        car.raiseBed(20);
+        car.lowerBed(10);
+        assertEquals(10, car.getBedAngle());
     }
 
     @Test
     void raiseBedMaxTest() {
-        bil.raiseBed(80);
-        assertEquals(70, bil.getBedAngle());
+        car.raiseBed(80);
+        assertEquals(70, car.getBedAngle());
     }
 
     @Test
     void lowerBedMinTest() {
-        bil.lowerBed(10);
-        assertEquals(0, bil.getBedAngle());
+        car.lowerBed(10);
+        assertEquals(0, car.getBedAngle());
     }
 }

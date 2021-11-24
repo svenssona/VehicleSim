@@ -7,42 +7,42 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on CarTransport.
  */
 class CarTransportTest {
-    private CarTransport<Loadable> bil;
+    private CarTransport<Loadable> car;
 
     @BeforeEach
-    void newBil() { bil = new CarTransport<>(); }
+    void newCar() { car = new CarTransport<>(); }
 
     @Test
     void raiseBedTest() {
-        bil.raiseBed();
-        assertEquals(90, bil.getBedAngle());
+        car.raiseBed();
+        assertEquals(90, car.getBedAngle());
     }
 
     @Test
     void lowerBedTest() {
-        bil.raiseBed();
-        bil.lowerBed();
-        assertEquals(-20, bil.getBedAngle());
+        car.raiseBed();
+        car.lowerBed();
+        assertEquals(-20, car.getBedAngle());
     }
 
     @Test
     void raiseBedMaxTest() {
-        bil.raiseBed();
-        assertEquals(90, bil.getBedAngle());
+        car.raiseBed();
+        assertEquals(90, car.getBedAngle());
     }
 
     @Test
     void lowerBedMinTest() {
-        bil.lowerBed();
-        assertEquals(-20, bil.getBedAngle());
+        car.lowerBed();
+        assertEquals(-20, car.getBedAngle());
     }
 
     @Test
     void loadDiffCars() {
         // Makes sure we get a static compile time error when loading a Scania and that we can load both a Volvo240 and
         // Saab95 at the same time.
-        bil.loadCargo(new Volvo240());
-        bil.loadCargo(new Saab95());
-        // bil.loadCargo(new Scania());
+        car.loadCargo(new Volvo240());
+        car.loadCargo(new Saab95());
+        // car.loadCargo(new Scania());
     }
 }
