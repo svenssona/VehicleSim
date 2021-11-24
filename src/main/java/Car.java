@@ -110,8 +110,8 @@ abstract class Car implements Moveable {
 
     // Returns the distance between two points. 
     static double distance(Point2D pointA, Point2D pointB) {
-        Point2D temp = new Point2D.Double(pointA.getX()-pointB.getX(),pointA.getY()-pointB.getY());
-        double squaredDistance = Math.pow(temp.getX(),2)+Math.pow(temp.getY(),2);
+        double squaredDistance = Math.pow(pointA.getX()-pointB.getX(),2)
+                + Math.pow(pointA.getY()-pointB.getY(),2);
         return Math.sqrt(squaredDistance);
     }
 
