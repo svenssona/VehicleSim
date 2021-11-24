@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 /**
  * Object class for constructing a Volvo240 with its specific features.
@@ -20,7 +21,7 @@ public class Volvo240 extends Car implements Loadable{
         enginePower = 100;
         modelName = "Volvo240";
         stopEngine();
-        position = new double[] {0,0};
+        position = new Point2D.Double(0,0);
     }
 
     /**

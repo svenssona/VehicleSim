@@ -1,6 +1,6 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 import java.lang.IllegalArgumentException;
-import java.util.Arrays;
 
 /**
  * This is an abstract class defining the basic functions of a car.
@@ -19,7 +19,7 @@ abstract class Car implements Moveable {
     double currentSpeed; // The current speed of the car.
     Color color; // Color of the car.
     String modelName; // The car model name.
-    double[] position; // Holds (x,y) position of the car.
+    Point2D position; // Holds (x,y) position of the car.
     int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
     private final int NORTH = 0;
     private final int WEST = 1;
@@ -49,7 +49,7 @@ abstract class Car implements Moveable {
     /**
      * Returns the current position of the car.
      */
-    public double[] getPosition() { return position; }
+    public Point2D getPosition() { return position; }
 
     /**
      * Returns the current position of the car.
@@ -67,7 +67,7 @@ abstract class Car implements Moveable {
      * Sets the position of the car.
      * @param position The position to set the car to.
      */
-    public void setPosition(double[] position) { this.position = position; }
+    public void setPosition(Point2D position) { this.position = position; }
 
     // Car engine features.
     /**
@@ -85,13 +85,13 @@ abstract class Car implements Moveable {
      */
     public void move() {
         switch (this.direction) {
-            case NORTH: this.position[1] += this.getCurrentSpeed();
+            case NORTH: this.position.setLocation(this.position.getX(),this.position.getY()+this.getCurrentSpeed());
                 break;
-            case WEST: this.position[0] -= this.getCurrentSpeed();
+            case WEST: this.position.setLocation(this.position.getX()-this.getCurrentSpeed(),this.position.getY());
                 break;
-            case SOUTH: this.position[1] -= this.getCurrentSpeed();
+            case SOUTH: this.position.setLocation(this.position.getX(),this.position.getY()-this.getCurrentSpeed());
                 break;
-            case EAST: this.position[0] += this.getCurrentSpeed();
+            case EAST: this.position.setLocation(this.position.getX()+this.getCurrentSpeed(),this.position.getY());
                 break;
         }
     }
@@ -109,13 +109,9 @@ abstract class Car implements Moveable {
     }
 
     // Returns the distance between two points. 
-    static double distance(double[] pointA, double[] pointB) {
-        double[] temp = new double[pointA.length];
-        Arrays.setAll(temp, i -> pointA[i] - pointB[i]);
-        double squaredDistance = 0.0;
-        for (double num : temp) {
-            squaredDistance += num * num;
-        }
+    static double distance(Point2D pointA, Point2D pointB) {
+        Point2D temp = new Point2D.Double(pointA.getX()-pointB.getX(),pointA.getY()-pointB.getY());
+        double squaredDistance = Math.pow(temp.getX(),2)+Math.pow(temp.getY(),2);
         return Math.sqrt(squaredDistance);
     }
 

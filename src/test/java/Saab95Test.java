@@ -21,7 +21,7 @@ class Saab95Test {
     void moveTest() {
         car.gas(1);
         car.move();
-        assertEquals(1.25, car.position[1]);
+        assertEquals(1.25, car.position.getY());
     }
 
     @Test

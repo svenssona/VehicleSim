@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Ferry<T extends Loadable> extends CarTransport<T> {
     /**
@@ -10,7 +11,7 @@ public class Ferry<T extends Loadable> extends CarTransport<T> {
         enginePower = 1000;
         modelName = "NightCruiser420";
         stopEngine();
-        position = new double[]{0, 0};
+        position = new Point2D.Double(0,0);
     }
 
     /**

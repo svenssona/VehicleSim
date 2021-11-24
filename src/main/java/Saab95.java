@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 /**
  * Object class for constructing a Saab95 with its specific features.
@@ -21,7 +22,7 @@ public class Saab95 extends Car implements Loadable{
         turboOn = false;
         modelName = "Saab95";
         stopEngine();
-        position = new double[] {0,0};
+        position = new Point2D.Double(0,0);
     }
 
     public void setTurbo(boolean TurboOn) {

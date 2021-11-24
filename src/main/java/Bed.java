@@ -1,3 +1,4 @@
+import java.awt.geom.Point2D;
 import java.util.LinkedList;
 
 /**
@@ -129,13 +130,13 @@ class Bed <T extends Loadable> {
     public T unloadFirstCargo(int carrierDirection) throws IllegalStateException {
         if (this.getBedAngle() == getMinAngle()) {
             assert loadedObjects.peekFirst() != null;
-            double[] newPosition = loadedObjects.peekFirst().getPosition();
+            Point2D newPosition = loadedObjects.peekFirst().getPosition();
             // Handles placing cargo one unit behind the carrier.
             switch (carrierDirection) {
-                case 0: newPosition[1] += -1; break;
-                case 1: newPosition[0] += 1; break;
-                case 2: newPosition[1] += 1; break;
-                case 3: newPosition[0] += -1; break;
+                case 0: newPosition.setLocation(newPosition.getX(),newPosition.getY()-1); break;
+                case 1: newPosition.setLocation(newPosition.getX()+1,newPosition.getY()); break;
+                case 2: newPosition.setLocation(newPosition.getX(),newPosition.getY()+1); break;
+                case 3: newPosition.setLocation(newPosition.getX()-1,newPosition.getY()); break;
             }
             // Sets the top object of the stack to the new position for unloading.
             assert loadedObjects.peekFirst() != null;
@@ -154,13 +155,13 @@ class Bed <T extends Loadable> {
     public T unloadLastCargo(int carrierDirection) throws IllegalStateException {
         if (this.getBedAngle() == getMinAngle()) {
             assert loadedObjects.peekLast() != null;
-            double[] newPosition = loadedObjects.peekLast().getPosition();
+            Point2D newPosition = loadedObjects.peekLast().getPosition();
             // Handles placing cargo one unit behind the carrier.
             switch (carrierDirection) {
-                case 0: newPosition[1] += -1; break;
-                case 1: newPosition[0] += 1; break;
-                case 2: newPosition[1] += 1; break;
-                case 3: newPosition[0] += -1; break;
+                case 0: newPosition.setLocation(newPosition.getX(),newPosition.getY()-1); break;
+                case 1: newPosition.setLocation(newPosition.getX()+1,newPosition.getY()); break;
+                case 2: newPosition.setLocation(newPosition.getX(),newPosition.getY()+1); break;
+                case 3: newPosition.setLocation(newPosition.getX()-1,newPosition.getY()); break;
             }
             // Sets the top object of the stack to the new position for unloading.
             assert loadedObjects.peekLast() != null;

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 /**
  * Object class for constructing a CarTransport super with its specific features.
@@ -24,7 +25,7 @@ public class CarTransport<T extends Loadable> extends Car {
         enginePower = 300;
         modelName = "CarTransport";
         stopEngine();
-        position = new double[] {0, 0};
+        position = new Point2D.Double(0,0);
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 /**
  * Object class for constructing a Scania super with its specific features.
@@ -22,7 +23,7 @@ public class Scania<T extends Loadable> extends Car{
         enginePower = 300;
         modelName = "Scania-super";
         stopEngine();
-        position = new double[] {0,0};
+        position = new Point2D.Double(0,0);
     }
 
     /**
