@@ -108,13 +108,6 @@ abstract class Car implements Moveable {
         this.direction = Math.floorMod(this.direction - 1, 4);
     }
 
-    // Returns the distance between two points. 
-    static double distance(Point2D pointA, Point2D pointB) {
-        double squaredDistance = Math.pow(pointA.getX()-pointB.getX(),2)
-                + Math.pow(pointA.getY()-pointB.getY(),2);
-        return Math.sqrt(squaredDistance);
-    }
-
     // Car speed features.
     /**
      * Speeds up the car.

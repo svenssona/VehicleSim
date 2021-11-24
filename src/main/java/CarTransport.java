@@ -37,7 +37,7 @@ public class CarTransport<T extends Loadable> extends Car {
      */
     public void loadCargo(T cargo) {
         // Checks that we are in position to load.
-        if (Car.distance(this.position, cargo.getPosition()) <= 2) {
+        if (this.position.distance(cargo.getPosition()) <= 2) {
             this.bed.loadCargoLast(cargo);
         }
     }
