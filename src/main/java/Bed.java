@@ -123,7 +123,7 @@ class Bed <T extends Loadable> {
     /**
      * Unloads the object in to the cargo from the loading bed a given direction from the carrier.
      * @param carrierDirection Direction the front of the bed is facing.
-     * @param unloadLast Wheter to unload the last element.
+     * @param unloadLast Whether to unload the last element.
      * @return Returns the unloaded cargo.
      * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
@@ -131,12 +131,13 @@ class Bed <T extends Loadable> {
         if (this.getBedAngle() == getMinAngle()) {
             assert loadedObjects.peekFirst() != null;
             Point2D newPosition = loadedObjects.peekFirst().getPosition();
-            // Handles placing cargo one unit behind the carrier.
+            int unloadDirection = unloadLast ? 1 : -1;
+            // Handles placing cargo one unit in the appropriate direction.
             switch (carrierDirection) {
-                case NORTH: translate(newPosition, 0, -1); break;
-                case WEST: translate(newPosition, 1, 0); break;
-                case SOUTH: translate(newPosition, 0, 1); break;
-                case EAST: translate(newPosition, -1, 0); break;
+                case NORTH: translate(newPosition, 0, -unloadDirection); break;
+                case WEST: translate(newPosition, unloadDirection, 0); break;
+                case SOUTH: translate(newPosition, 0, unloadDirection); break;
+                case EAST: translate(newPosition, -unloadDirection, 0); break;
             }
             // Sets the object of the queue to the new position for unloading.
             if (unloadLast) {
