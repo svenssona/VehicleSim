@@ -1,7 +1,7 @@
 /**
  * Interface to be implemented by moveable object.
  */
-interface Moveable{
+public interface Moveable {
 
     /**
      * Moves the object.
