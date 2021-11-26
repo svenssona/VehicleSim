@@ -20,12 +20,7 @@ public class CarTransport<T extends Loadable> extends Car {
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
      */
     public CarTransport() {
-        nrDoors = 2;
-        color = Color.blue;
-        enginePower = 300;
-        modelName = "CarTransport";
-        stopEngine();
-        position = new Point2D.Double(0,0);
+        super(2, 300, Color.blue, "CarTransport", new Point2D.Double(0,0));
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
@@ -37,7 +32,7 @@ public class CarTransport<T extends Loadable> extends Car {
      */
     public void loadCargo(T cargo) {
         // Checks that we are in position to load.
-        if (this.position.distance(cargo.getPosition()) <= 2) {
+        if (this.getPosition().distance(cargo.getPosition()) <= 2) {
             this.bed.loadCargoLast(cargo);
         }
     }
@@ -55,7 +50,7 @@ public class CarTransport<T extends Loadable> extends Car {
     public void move() {
         super.move();
         for (T cargo : this.bed.getCargo()) {
-            cargo.setPosition(this.position);
+            cargo.setPosition(this.getPosition());
         }
     }
 
@@ -94,7 +89,7 @@ public class CarTransport<T extends Loadable> extends Car {
      */
     @Override
     double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     // The car transport can only have in two positions (down or up).

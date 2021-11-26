@@ -14,17 +14,27 @@ abstract class Car implements Moveable {
     /**
      * Parameters defining the cars characterises and initial states.
      */
-    int nrDoors; // Number of doors on the car.
-    double enginePower; // Engine power of the car.
-    double currentSpeed; // The current speed of the car.
-    Color color; // Color of the car.
-    String modelName; // The car model name.
-    Point2D position; // Holds (x,y) position of the car.
-    int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
-    private final int NORTH = 0;
-    private final int WEST = 1;
-    private final int SOUTH = 2;
-    private final int EAST = 3;
+    private int nrDoors; // Number of doors on the car.
+    private double enginePower; // Engine power of the car.
+    private double currentSpeed; // The current speed of the car.
+    private Color color; // Color of the car.
+    private String modelName; // The car model name.
+    private Point2D position; // Holds (x,y) position of the car.
+    private int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
+    final int NORTH = 0;
+    final int WEST = 1;
+    final int SOUTH = 2;
+    final int EAST = 3;
+    
+    public Car(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
+        this.nrDoors = nrDoors; 
+        this.enginePower = enginePower; 
+        this.currentSpeed = 0; 
+        this.color = color; 
+        this.modelName = modelName; 
+        this.position = position; 
+        this.direction = 0; 
+    }
 
     // Getters.
     /**

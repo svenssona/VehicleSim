@@ -18,19 +18,14 @@ public class Scania<T extends Loadable> extends Car{
      * Constructs a 300 horse-power, two-door, blue Scania with start position in (0, 0).
      */
     public Scania() {
-        nrDoors = 2;
-        color = Color.blue;
-        enginePower = 300;
-        modelName = "Scania-super";
-        stopEngine();
-        position = new Point2D.Double(0,0);
+        super(2, 300, Color.blue, "Scania-super", new Point2D.Double(0,0));
     }
 
     /**
      * @return the speed factor that determines how fast the speed increases/decreases.
      */
     double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     /**

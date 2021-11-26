@@ -16,13 +16,8 @@ public class Saab95 extends Car implements Loadable{
      * Constructs a 125 horse-power, two-door, red SAAB95 with start position in (0, 0).
      */
     public Saab95(){
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
-        turboOn = false;
-        modelName = "Saab95";
-        stopEngine();
-        position = new Point2D.Double(0,0);
+        super(2, 125, Color.red, "Saab95", new Point2D.Double(0,0));
+        this.turboOn = false;
     }
 
     public void setTurbo(boolean TurboOn) {
@@ -35,6 +30,6 @@ public class Saab95 extends Car implements Loadable{
     double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return this.getEnginePower() * 0.01 * turbo;
     }
 }

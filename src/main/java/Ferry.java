@@ -3,15 +3,10 @@ import java.awt.geom.Point2D;
 
 public class Ferry<T extends Loadable> extends CarTransport<T> {
     /**
-     * Constructs the legendary ferry NightCruiser420 with 1000 hp. It can take up to 10 cars.
+     * Constructs the legendary ferry NightCruiser420 with 1000 hp.
      */
     public Ferry() {
-        nrDoors = 1;
-        color = Color.black;
-        enginePower = 1000;
-        modelName = "NightCruiser420";
-        stopEngine();
-        position = new Point2D.Double(0,0);
+        super(1, Color.black, 1000, "NightCruiser420", new Point2D.Double(0,0));
     }
 
     /**
