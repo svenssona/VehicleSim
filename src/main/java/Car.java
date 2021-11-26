@@ -21,10 +21,6 @@ abstract class Car implements Moveable {
     private String modelName; // The car model name.
     private Point2D position; // Holds (x,y) position of the car.
     private int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
-    final int NORTH = 0;
-    final int WEST = 1;
-    final int SOUTH = 2;
-    final int EAST = 3;
     
     public Car(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
@@ -94,7 +90,7 @@ abstract class Car implements Moveable {
      * Moves the car by the value of speed according to the direction attribute.
      */
     public void move() {
-        switch (this.direction) {
+        switch (Direction.values()[this.direction]) {
             case NORTH: this.position.setLocation(this.position.getX(),this.position.getY()+this.getCurrentSpeed());
                 break;
             case WEST: this.position.setLocation(this.position.getX()-this.getCurrentSpeed(),this.position.getY());

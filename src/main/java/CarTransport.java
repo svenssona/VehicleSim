@@ -14,13 +14,14 @@ public class CarTransport<T extends Loadable> extends Car {
     private final static double maxAngle = 90;
     private final static double minAngle = -20;
     private final static int capacity = 7;
-    final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
+    private final Bed<T> bed; 
 
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
      */
     public CarTransport() {
         super(2, 300, Color.blue, "CarTransport", new Point2D.Double(0,0));
+        this.bed = new Bed<>(maxAngle, capacity, minAngle);
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
