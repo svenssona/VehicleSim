@@ -8,9 +8,10 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class Saab95 extends Car implements Loadable{
+public class Saab95 extends Car implements LoadableCar{
 
     private boolean turboOn;
+    private boolean isLoaded;
 
     /**
      * Constructs a 125 horse-power, two-door, red SAAB95 with start position in (0, 0).
@@ -35,5 +36,23 @@ public class Saab95 extends Car implements Loadable{
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return this.getEnginePower() * 0.01 * turbo;
+    }
+
+    /**
+     * Returns whether the object is loaded.
+     * @return Returns whether the object is loaded.
+     */
+    @Override
+    public boolean getLoadState() {
+        return isLoaded;
+    }
+
+    /**
+     * Sets if the object is loaded or not.
+     * @param loadState Sets if the object to a loaded or offloaded state (true/false).
+     */
+    @Override
+    public void setLoadState(boolean loadState) {
+        this.isLoaded = loadState;
     }
 }

@@ -104,15 +104,19 @@ class Bed <T extends Loadable> {
      * Loads a loadable object to the bed queue.
      * @param cargo A loadable object.
      * @param loadLast true if we should load the cargo at the back of the queue.
+     * @throws IllegalStateException If the bed is not at the lower position or if the bed is full.
      */
-    public void loadCargo(T cargo, boolean loadLast) {
+    public void loadCargo(T cargo, boolean loadLast) throws IllegalStateException {
         // Checks that the ramp is lowered and that the loading deck is not full.
         if (this.getBedAngle() == getMinAngle() && loadedObjects.size() <= getCapacity()) {
+            cargo.setLoadState(true);
             if (loadLast) {
                 loadedObjects.addLast(cargo);
             } else {
                 loadedObjects.addFirst(cargo);
             }
+        } else {
+            throw new IllegalStateException();
         }
     }
 
@@ -136,10 +140,13 @@ class Bed <T extends Loadable> {
             }
             // Sets the object of the queue to the new position for unloading.
             if (unloadLast) {
+                assert loadedObjects.peekLast() != null;
+                loadedObjects.peekLast().setLoadState(false);
                 loadedObjects.peekLast().setPosition(newPosition);
                 return loadedObjects.removeLast();
             } else {
                 assert loadedObjects.peekFirst() != null;
+                loadedObjects.peekFirst().setLoadState(false);
                 loadedObjects.peekFirst().setPosition(newPosition);
                 return loadedObjects.removeFirst();
             }

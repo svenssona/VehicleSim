@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport<T extends Loadable> extends Car {
+public class CarTransport<T extends LoadableCar> extends Car {
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;
@@ -40,6 +40,7 @@ public class CarTransport<T extends Loadable> extends Car {
         // Checks that we are in position to load.
         if (this.getPosition().distance(cargo.getPosition()) <= 2) {
             this.bed.loadCargo(cargo, true);
+            cargo.stopEngine();
         }
     }
 
