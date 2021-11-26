@@ -97,23 +97,29 @@ abstract class Car implements Moveable {
      */
     public void move() {
         switch (this.direction) {
-            case NORTH: this.position.setLocation(this.position.getX(),this.position.getY()+this.getCurrentSpeed());
+            case NORTH: translate(this.position, 0, this.getCurrentSpeed());
                 break;
-            case WEST: this.position.setLocation(this.position.getX()-this.getCurrentSpeed(),this.position.getY());
+            case WEST: translate(this.position, -this.getCurrentSpeed(), 0);
                 break;
-            case SOUTH: this.position.setLocation(this.position.getX(),this.position.getY()-this.getCurrentSpeed());
+            case SOUTH: translate(this.position, 0, -this.getCurrentSpeed());
                 break;
-            case EAST: this.position.setLocation(this.position.getX()+this.getCurrentSpeed(),this.position.getY());
+            case EAST: translate(this.position, this.getCurrentSpeed(), 0);
                 break;
         }
     }
+
+    private void translate(Point2D position, double dx, double dy) {
+        position.setLocation(position.getX() + dx, position.getY() + dy);
+    }
+
     /**
      * Turns the car one cardinal direction going counterclockwise.
      */
     public void turnLeft() {
         // Takes the index value in enum Direction increments it modulo 4
         // and then reconvert it from int to new Direction.
-        this.direction = Direction.values()[Math.floorMod(this.direction.ordinal() + 1, 4)];
+        int newIndex = Math.floorMod(this.direction.ordinal() + 1, 4);
+        this.direction = Direction.values()[newIndex];
     }
     /**
      * Turns the car one cardinal direction going clockwise.
@@ -121,7 +127,8 @@ abstract class Car implements Moveable {
     public void turnRight() {
         // Takes the index value in enum Direction increments it modulo 4
         // and then reconvert it from int to new Direction.
-        this.direction = Direction.values()[Math.floorMod(this.direction.ordinal() - 1, 4)];
+        int newIndex = Math.floorMod(this.direction.ordinal() - 1, 4);
+        this.direction = Direction.values()[newIndex];
     }
 
     // Car speed features.
