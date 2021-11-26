@@ -6,7 +6,7 @@ public class Ferry<T extends Loadable> extends CarTransport<T> {
      * Constructs the legendary ferry NightCruiser420 with 1000 hp.
      */
     public Ferry() {
-        super(1, Color.black, 1000, "NightCruiser420", new Point2D.Double(0,0));
+        super(1, 1000, Color.black, "NightCruiser420", new Point2D.Double(0,0));
     }
 
     /**

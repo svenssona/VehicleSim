@@ -18,7 +18,8 @@ public class Scania<T extends Loadable> extends Car{
      * Constructs a 300 horse-power, two-door, blue Scania with start position in (0, 0).
      */
     public Scania() {
-        super(2, 300, Color.blue, "Scania-super", new Point2D.Double(0,0));
+        super(2, 300, Color.blue, "Scania-super",
+                new Point2D.Double(0,0));
     }
 
     /**

@@ -14,8 +14,8 @@ abstract class Car implements Moveable {
     /**
      * Parameters defining the cars characterises and initial states.
      */
-    private int nrDoors; // Number of doors on the car.
-    private double enginePower; // Engine power of the car.
+    private final int nrDoors; // Number of doors on the car.
+    private final double enginePower; // Engine power of the car.
     private double currentSpeed; // The current speed of the car.
     private Color color; // Color of the car.
     private String modelName; // The car model name.
@@ -28,12 +28,12 @@ abstract class Car implements Moveable {
     
     public Car(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
-        this.enginePower = enginePower; 
-        this.currentSpeed = 0; 
-        this.color = color; 
-        this.modelName = modelName; 
-        this.position = position; 
-        this.direction = 0; 
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.position = position;
+        this.direction = 0;
+        stopEngine();
     }
 
     // Getters.

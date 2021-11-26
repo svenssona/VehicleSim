@@ -19,8 +19,8 @@ public class CarTransport<T extends Loadable> extends Car {
     /**
      * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
      */
-    public CarTransport() {
-        super(2, 300, Color.blue, "CarTransport", new Point2D.Double(0,0));
+    public CarTransport(int nrDoors, double enginePower, Color color, String modelName, Point2D point) {
+        super(nrDoors, enginePower, color, modelName, point);
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.

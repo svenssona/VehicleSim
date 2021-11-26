@@ -18,7 +18,7 @@ class Volvo240Test {
         car.gas(1);
         car.turnRight();
         car.move();
-        assertEquals(1.25, car.position.getX());
+        assertEquals(1.25, car.getPosition().getX());
     }
 
     @Test
@@ -27,7 +27,7 @@ class Volvo240Test {
         car.turnRight();
         car.turnRight();
         car.move();
-        assertEquals(-1.25, car.position.getY());
+        assertEquals(-1.25, car.getPosition().getY());
     }
 
     @Test
@@ -35,13 +35,13 @@ class Volvo240Test {
         car.gas(1);
         car.turnLeft();
         car.move();
-        assertEquals(-1.25, car.position.getX());
+        assertEquals(-1.25, car.getPosition().getX());
     }
     @Test
     void breakTest() {
         car.gas(1);
         car.brake(1);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.getCurrentSpeed());
     }
 
     @Test
@@ -65,13 +65,13 @@ class Volvo240Test {
         Volvo240 car = new Volvo240();
         car.turnLeft();
         car.turnLeft();
-        assertEquals(2, car.direction);
+        assertEquals(2, car.getDirection());
     }
 
     @Test
     void turnRightTest() {
         Volvo240 car = new Volvo240();
         car.turnRight();
-        assertEquals(3, car.direction);
+        assertEquals(3, car.getDirection());
     }
 }
