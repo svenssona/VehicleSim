@@ -108,6 +108,7 @@ abstract class Car implements Moveable {
         }
     }
 
+    // Moves the specified point by dx and dy in x and y direction respectivly.
     private void translate(Point2D position, double dx, double dy) {
         position.setLocation(position.getX() + dx, position.getY() + dy);
     }

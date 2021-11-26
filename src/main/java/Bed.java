@@ -129,10 +129,10 @@ class Bed <T extends Loadable> {
             Point2D newPosition = loadedObjects.peekFirst().getPosition();
             // Handles placing cargo one unit behind the carrier.
             switch (carrierDirection) {
-                case NORTH: newPosition.setLocation(newPosition.getX(),newPosition.getY()-1); break;
-                case WEST: newPosition.setLocation(newPosition.getX()+1,newPosition.getY()); break;
-                case SOUTH: newPosition.setLocation(newPosition.getX(),newPosition.getY()+1); break;
-                case EAST: newPosition.setLocation(newPosition.getX()-1,newPosition.getY()); break;
+                case NORTH: translate(newPosition, 0, -1); break;
+                case WEST: translate(newPosition, 1, 0); break;
+                case SOUTH: translate(newPosition, 0, 1); break;
+                case EAST: translate(newPosition, -1, 0); break;
             }
             // Sets the object of the queue to the new position for unloading.
             if (unloadLast) {
@@ -146,5 +146,10 @@ class Bed <T extends Loadable> {
         } else {
             throw new IllegalStateException();
         }
+    }
+
+    // Moves the specified point by dx and dy in x and y direction respectivly.
+    private void translate(Point2D position, double dx, double dy) {
+        position.setLocation(position.getX() + dx, position.getY() + dy);
     }
 }
