@@ -20,7 +20,7 @@ abstract class Car implements Moveable {
     private Color color; // Color of the car.
     private String modelName; // The car model name.
     private Point2D position; // Holds (x,y) position of the car.
-    private int direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
+    private Direction direction; // Direction value of the car, North = 0, West = 1, South = 2, East = 3.
     
     public Car(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
@@ -28,7 +28,7 @@ abstract class Car implements Moveable {
         this.color = color;
         this.modelName = modelName;
         this.position = position;
-        this.direction = 0;
+        this.direction = Direction.NORTH;
         stopEngine();
     }
 
@@ -66,7 +66,7 @@ abstract class Car implements Moveable {
      *  Returns the current position of the car.
      * @return Returns the current position of the car.
      */
-    public int getDirection() { return direction; }
+    public Direction getDirection() { return direction; }
 
     // Setter.
     /**
@@ -96,7 +96,7 @@ abstract class Car implements Moveable {
      * Moves the car by the value of speed according to the direction attribute.
      */
     public void move() {
-        switch (Direction.values()[this.direction]) {
+        switch (this.direction) {
             case NORTH: this.position.setLocation(this.position.getX(),this.position.getY()+this.getCurrentSpeed());
                 break;
             case WEST: this.position.setLocation(this.position.getX()-this.getCurrentSpeed(),this.position.getY());
@@ -111,13 +111,17 @@ abstract class Car implements Moveable {
      * Turns the car one cardinal direction going counterclockwise.
      */
     public void turnLeft() {
-        this.direction = Math.floorMod(this.direction + 1, 4);
+        // Takes the index value in enum Direction increments it modulo 4
+        // and then reconvert it from int to new Direction.
+        this.direction = Direction.values()[Math.floorMod(this.direction.ordinal() + 1, 4)];
     }
     /**
      * Turns the car one cardinal direction going clockwise.
      */
     public void turnRight() {
-        this.direction = Math.floorMod(this.direction - 1, 4);
+        // Takes the index value in enum Direction increments it modulo 4
+        // and then reconvert it from int to new Direction.
+        this.direction = Direction.values()[Math.floorMod(this.direction.ordinal() - 1, 4)];
     }
 
     // Car speed features.

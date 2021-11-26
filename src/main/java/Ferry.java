@@ -10,7 +10,8 @@ public class Ferry<T extends Loadable> extends CarTransport<T> {
      * Constructs the legendary ferry NightCruiser420 with 1000 hp.
      */
     public Ferry() {
-        super(1, 1000, Color.black, "NightCruiser420", new Point2D.Double(0,0));
+        super(1, 1000, Color.black, "NightCruiser420",
+                new Point2D.Double(0,0));
     }
 
     /**
@@ -21,6 +22,7 @@ public class Ferry<T extends Loadable> extends CarTransport<T> {
      */
     @Override
     public T unloadCargo() throws IllegalStateException {
-        return this.bed.unloadFirstCargo(getDirection());
+        return this.getBed().unloadCargo(getDirection(), false);
     }
 }
+

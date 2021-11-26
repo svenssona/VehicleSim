@@ -39,7 +39,7 @@ public class CarTransport<T extends Loadable> extends Car {
     public void loadCargo(T cargo) {
         // Checks that we are in position to load.
         if (this.getPosition().distance(cargo.getPosition()) <= 2) {
-            this.bed.loadCargoLast(cargo);
+            this.bed.loadCargo(cargo, true);
         }
     }
 
@@ -49,7 +49,7 @@ public class CarTransport<T extends Loadable> extends Car {
      * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
     public T unloadCargo() throws IllegalStateException {
-        return this.bed.unloadLastCargo(getDirection());
+        return this.bed.unloadCargo(getDirection(), true);
     }
 
     @Override
@@ -88,6 +88,14 @@ public class CarTransport<T extends Loadable> extends Car {
      */
     public static int getCapacity() {
         return capacity;
+    }
+
+    /**
+     * Returns the car transport.
+     * @return Returns the car transport.
+     */
+    public Bed<T> getBed() {
+        return bed;
     }
 
     /**
