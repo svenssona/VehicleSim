@@ -31,7 +31,7 @@ public class Scania<T extends Loadable> extends Car{
 
     /**
      * Raises the trucks loading bed a desired amount, caps out at 70 degrees.
-     * @param deltaAngle
+     * @param deltaAngle Takes in the angle difference that you want to bed with.
      */
     public void raiseBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {
@@ -41,7 +41,7 @@ public class Scania<T extends Loadable> extends Car{
 
     /**
      * Lowers the trucks loading bed a desired amount.
-     * @param deltaAngle
+     * @param deltaAngle Takes in the angle difference that you want to bed with.
      */
     public void lowerBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {

@@ -38,31 +38,37 @@ abstract class Car implements Moveable {
 
     // Getters.
     /**
-     * Returns the number of doors of the car.
+     * Returns the number of doors on your specific car.
+     * @return Returns the number of doors on your specific car.
      */
     public int getNrDoors() { return nrDoors; }
 
     /**
-     * Returns the color of the car.
+     *  Returns the color of your specific car.
+     * @return Returns the color of your specific car.
      */
     public Color getColor() { return color; }
 
     /**
      * Returns the engine power of the car.
+     * @return Returns the engine power of the car.
      */
     public double getEnginePower() { return enginePower; }
     /**
      * Returns the current speed of the car.
+     * @return Returns the current speed of the car.
      */
     public double getCurrentSpeed() { return currentSpeed; }
 
     /**
-     * Returns the current position of the car.
+     *  Returns the current position of the car.
+     * @return Returns the current position of the car.
      */
     public Point2D getPosition() { return position; }
 
     /**
-     * Returns the current position of the car.
+     *  Returns the current position of the car.
+     * @return Returns the current position of the car.
      */
     public int getDirection() { return direction; }
 

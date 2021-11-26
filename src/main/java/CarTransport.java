@@ -17,7 +17,12 @@ public class CarTransport<T extends Loadable> extends Car {
     final Bed<T> bed = new Bed<>(maxAngle, capacity, minAngle);
 
     /**
-     * Constructs a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
+     * For example you can construct a 300 horse-power, two-door, blue CarTransport with start position in (0, 0).
+     * @param nrDoors Number of doors that your car transport should have.
+     * @param enginePower  Enter the specific engine power of your car transport.
+     * @param color Color of the car transport.
+     * @param modelName The specific model name for the car transport.
+     * @param point Sets the initial starting point of your car transport.
      */
     public CarTransport(int nrDoors, double enginePower, Color color, String modelName, Point2D point) {
         super(nrDoors, enginePower, color, modelName, point);
@@ -40,7 +45,7 @@ public class CarTransport<T extends Loadable> extends Car {
     /**
      * Unloads a car from the car transport.
      * @return The unloaded car.
-     * @throws If the bed is not at the lower position then we can't unload.
+     * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
     public T unloadCargo() throws IllegalStateException {
         return this.bed.unloadLastCargo(getDirection());

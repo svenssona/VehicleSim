@@ -6,11 +6,12 @@ import java.awt.geom.Point2D;
 public interface Loadable {
     /**
      * Sets the position of the loadable object.
-     * @param position
+     * @param position Sets the position of the current loadable object.
      */
     void setPosition(Point2D position);
 
     /**
+     * Returns the current position of the loadable object.
      * @return Returns the current position of the loadable object.
      */
     Point2D getPosition();
