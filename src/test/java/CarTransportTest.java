@@ -10,59 +10,59 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class for testing the possible operations on CarTransport.
  */
 class CarTransportTest {
-    private CarTransport<LoadableCar> car;
+    private CarTransport<LoadableCar> carTransporter;
 
     @BeforeEach
     void newCar() {
-        car = new CarTransport<>(2, 300, Color.red, "MegaLoader69",
+        carTransporter = new CarTransport<>(2, 300, Color.red, "MegaLoader69",
             new Point2D.Double(0, 0));
     }
 
     @Test
     void raiseBedTest() {
-        car.raiseBed();
-        assertEquals(90, car.getBedAngle());
+        carTransporter.raiseBed();
+        assertEquals(90, carTransporter.getBedAngle());
     }
 
     @Test
     void lowerBedTest() {
-        car.raiseBed();
-        car.lowerBed();
-        assertEquals(-20, car.getBedAngle());
+        carTransporter.raiseBed();
+        carTransporter.lowerBed();
+        assertEquals(-20, carTransporter.getBedAngle());
     }
 
     @Test
     void raiseBedMaxTest() {
-        car.raiseBed();
-        assertEquals(90, car.getBedAngle());
+        carTransporter.raiseBed();
+        assertEquals(90, carTransporter.getBedAngle());
     }
 
     @Test
     void lowerBedMinTest() {
-        car.lowerBed();
-        assertEquals(-20, car.getBedAngle());
+        carTransporter.lowerBed();
+        assertEquals(-20, carTransporter.getBedAngle());
     }
 
     @Test
     void loadDiffCars() {
         // Makes sure we get a static compile time error when loading a Scania and that we can load both a Volvo240 and
         // Saab95 at the same time.
-        car.lowerBed();
-        car.loadCargo(new Volvo240());
-        car.loadCargo(new Saab95());
-        // car.loadCargo(new Scania());
+        carTransporter.lowerBed();
+        carTransporter.loadCargo(new Volvo240());
+        carTransporter.loadCargo(new Saab95());
+        // carTransporter.loadCargo(new Scania());
     }
 
     @Test
     void carStaysOnTransport() {
         Volvo240 volvo = new Volvo240();
 
-        car.lowerBed();
-        car.loadCargo(volvo);
-        car.raiseBed();
+        carTransporter.lowerBed();
+        carTransporter.loadCargo(volvo);
+        carTransporter.raiseBed();
 
-        double carPositionX = car.getPosition().getX();
-        double carPositionY = car.getPosition().getY();
+        double carPositionX = carTransporter.getPosition().getX();
+        double carPositionY = carTransporter.getPosition().getY();
 
         volvo.turnLeft();
         volvo.gas(1.0);
@@ -73,8 +73,8 @@ class CarTransportTest {
         assertEquals(carPositionY, volvo.getPosition().getY());
 
         // Make sure the CarTransport hasn't moved as a side effect of the Volvo moving.
-        assertEquals(carPositionX, car.getPosition().getX());
-        assertEquals(carPositionY, car.getPosition().getY());
+        assertEquals(carPositionX, carTransporter.getPosition().getX());
+        assertEquals(carPositionY, carTransporter.getPosition().getY());
     }
 
 }
