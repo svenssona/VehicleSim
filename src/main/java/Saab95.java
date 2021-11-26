@@ -20,6 +20,10 @@ public class Saab95 extends Car implements Loadable{
         this.turboOn = false;
     }
 
+    /**
+     * Sets the turbo on or off.
+     * @param TurboOn This is a boolean, either you have turbo on or you do not.
+     */
     public void setTurbo(boolean TurboOn) {
         this.turboOn = TurboOn;
     }

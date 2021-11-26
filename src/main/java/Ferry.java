@@ -1,12 +1,16 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 
+/**
+ * Creates a car ferry that can load cars onto it and then transport them.
+ * @param <T> Can either load all loadable objects or a specific type of loadable objects.
+ */
 public class Ferry<T extends Loadable> extends CarTransport<T> {
     /**
      * Constructs the legendary ferry NightCruiser420 with 1000 hp.
      */
     public Ferry() {
-        super(1, Color.black, 1000, "NightCruiser420", new Point2D.Double(0,0));
+        super(1, 1000, Color.black, "NightCruiser420", new Point2D.Double(0,0));
     }
 
     /**

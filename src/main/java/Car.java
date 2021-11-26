@@ -14,8 +14,8 @@ abstract class Car implements Moveable {
     /**
      * Parameters defining the cars characterises and initial states.
      */
-    private int nrDoors; // Number of doors on the car.
-    private double enginePower; // Engine power of the car.
+    private final int nrDoors; // Number of doors on the car.
+    private final double enginePower; // Engine power of the car.
     private double currentSpeed; // The current speed of the car.
     private Color color; // Color of the car.
     private String modelName; // The car model name.
@@ -24,41 +24,47 @@ abstract class Car implements Moveable {
     
     public Car(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
-        this.enginePower = enginePower; 
-        this.currentSpeed = 0; 
-        this.color = color; 
-        this.modelName = modelName; 
-        this.position = position; 
-        this.direction = 0; 
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.position = position;
+        this.direction = 0;
+        stopEngine();
     }
 
     // Getters.
     /**
-     * Returns the number of doors of the car.
+     * Returns the number of doors on your specific car.
+     * @return Returns the number of doors on your specific car.
      */
     public int getNrDoors() { return nrDoors; }
 
     /**
-     * Returns the color of the car.
+     *  Returns the color of your specific car.
+     * @return Returns the color of your specific car.
      */
     public Color getColor() { return color; }
 
     /**
      * Returns the engine power of the car.
+     * @return Returns the engine power of the car.
      */
     public double getEnginePower() { return enginePower; }
     /**
      * Returns the current speed of the car.
+     * @return Returns the current speed of the car.
      */
     public double getCurrentSpeed() { return currentSpeed; }
 
     /**
-     * Returns the current position of the car.
+     *  Returns the current position of the car.
+     * @return Returns the current position of the car.
      */
     public Point2D getPosition() { return position; }
 
     /**
-     * Returns the current position of the car.
+     *  Returns the current position of the car.
+     * @return Returns the current position of the car.
      */
     public int getDirection() { return direction; }
 

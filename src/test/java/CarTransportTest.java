@@ -1,6 +1,9 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -10,7 +13,10 @@ class CarTransportTest {
     private CarTransport<Loadable> car;
 
     @BeforeEach
-    void newCar() { car = new CarTransport<>(); }
+    void newCar() {
+        car = new CarTransport<>(2, 300, Color.red, "Scania Super",
+            new Point2D.Double(0, 0));
+    }
 
     @Test
     void raiseBedTest() {

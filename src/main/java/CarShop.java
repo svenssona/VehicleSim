@@ -2,6 +2,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+/**
+ * This class handles all the repairs of a broken car.
+ * @param <T> The car shop can either take all different brands of cars or a specific brand.
+ */
 public class CarShop <T extends Car> {
     
     private List<T> carsInShop;
@@ -38,6 +42,9 @@ public class CarShop <T extends Car> {
         }
     }
 
+    /**
+     * @return Returns a list with all the cars in the shop.
+     */
     public List<T> getCarsInShop() {
         return carsInShop;
     }

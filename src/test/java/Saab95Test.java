@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +21,7 @@ class Saab95Test {
     void moveTest() {
         car.gas(1);
         car.move();
-        assertEquals(1.25, car.position.getY());
+        assertEquals(1.25, car.getPosition().getY());
     }
 
     @Test
@@ -52,12 +52,25 @@ class Saab95Test {
     @Test
     void turnLeftTest() {
         car.turnLeft();
-        assertEquals(1, car.direction);
+        assertEquals(1, car.getDirection());
     }
 
     @Test
     void turnRightTest() {
         car.turnRight();
-        assertEquals(3, car.direction);
+        assertEquals(3, car.getDirection());
+    }
+
+    @Test
+    void setPositionTest() {
+        car.setPosition(new Point2D.Double(47, 47));
+        assertEquals(new Point2D.Double(47,47), car.getPosition());
+    }
+
+    @Test
+    void testTurbo() {
+        car.setTurbo(true);
+        car.gas(1);
+        assertEquals(1.625, car.getCurrentSpeed());
     }
 }

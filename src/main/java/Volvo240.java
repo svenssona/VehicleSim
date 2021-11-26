@@ -16,7 +16,7 @@ public class Volvo240 extends Car implements Loadable{
      * Constructs a 100 horse-power, four-doors, black Volvo240 with start position in (0, 0).
      */
     public Volvo240(){
-        super(4, 100, Color.black, "Volvo240", new Point2D.Double(0,0)),
+        super(4, 100, Color.black, "Volvo240", new Point2D.Double(0,0));
     }
 
     /**
