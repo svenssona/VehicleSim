@@ -65,13 +65,13 @@ class Volvo240Test {
         Volvo240 car = new Volvo240();
         car.turnLeft();
         car.turnLeft();
-        assertEquals(2, car.getDirection());
+        assertEquals(Direction.SOUTH, car.getDirection());
     }
 
     @Test
     void turnRightTest() {
         Volvo240 car = new Volvo240();
         car.turnRight();
-        assertEquals(3, car.getDirection());
+        assertEquals(Direction.EAST, car.getDirection());
     }
 }

@@ -52,13 +52,13 @@ class Saab95Test {
     @Test
     void turnLeftTest() {
         car.turnLeft();
-        assertEquals(1, car.getDirection());
+        assertEquals(Direction.WEST, car.getDirection());
     }
 
     @Test
     void turnRightTest() {
         car.turnRight();
-        assertEquals(3, car.getDirection());
+        assertEquals(Direction.EAST, car.getDirection());
     }
 
     @Test
