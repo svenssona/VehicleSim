@@ -108,6 +108,14 @@ public class CarView extends JFrame{
             }
         });
 
+        // This is the actionListener for the brake button only
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.brake(gasAmount);
+            }
+        });
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
