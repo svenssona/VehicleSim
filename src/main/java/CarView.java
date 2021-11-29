@@ -40,9 +40,9 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String frameName, CarController cc){
         this.carC = cc;
-        initComponents(framename);
+        initComponents(frameName);
     }
 
     // Sets everything in place and fits everything
