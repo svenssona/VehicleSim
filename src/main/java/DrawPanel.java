@@ -10,8 +10,12 @@ public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
+    BufferedImage saabImage;
+    BufferedImage scaniaImage;
     // To keep track of a singel cars position
     Point volvoPoint = new Point();
+    Point saabImage = new Point();
+    Point scaniaImage = new Point();
 
     // TODO: Make this general for all cars
     void moveit(int x, int y){
@@ -32,7 +36,9 @@ public class DrawPanel extends JPanel {
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Volvo240.jpg"));
+            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("resources"));
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();

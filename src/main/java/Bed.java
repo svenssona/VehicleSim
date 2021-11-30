@@ -121,39 +121,51 @@ class Bed <T extends Loadable> {
     }
 
     /**
-     * Unloads the object in to the cargo from the loading bed a given direction from the carrier.
+     * Unloads the object in to the cargo from the loading bed at a given direction from the carrier.
      * @param carrierDirection Direction the front of the bed is facing.
-     * @param unloadLast Whether to unload the last element.
+     * @param unloadLast Whether to unload the last element or the first.
      * @return Returns the unloaded cargo.
      * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
     public T unloadCargo(Direction carrierDirection, boolean unloadLast) throws IllegalStateException {
         if (this.getBedAngle() == getMinAngle()) {
-            assert loadedObjects.peekFirst() != null;
-            Point2D newPosition = loadedObjects.peekFirst().getPosition();
-            int unloadDirection = unloadLast ? 1 : -1;
-            // Handles placing cargo one unit in the appropriate direction.
-            switch (carrierDirection) {
-                case NORTH: translate(newPosition, 0, -unloadDirection); break;
-                case WEST: translate(newPosition, unloadDirection, 0); break;
-                case SOUTH: translate(newPosition, 0, unloadDirection); break;
-                case EAST: translate(newPosition, -unloadDirection, 0); break;
-            }
-            // Sets the object of the queue to the new position for unloading.
+            Point2D unloadPosition = getUnloadPosition(carrierDirection, unloadLast);
+            // Unloads the object of the queue to the new position for unloading.
             if (unloadLast) {
                 assert loadedObjects.peekLast() != null;
                 loadedObjects.peekLast().setLoadState(false);
-                loadedObjects.peekLast().setPosition(newPosition);
+                loadedObjects.peekLast().setPosition(unloadPosition);
                 return loadedObjects.removeLast();
             } else {
                 assert loadedObjects.peekFirst() != null;
                 loadedObjects.peekFirst().setLoadState(false);
-                loadedObjects.peekFirst().setPosition(newPosition);
+                loadedObjects.peekFirst().setPosition(unloadPosition);
                 return loadedObjects.removeFirst();
             }
         } else {
             throw new IllegalStateException();
         }
+    }
+
+    /**
+     * Gets the unload position for the cargo on the bed.
+     * @param carrierDirection Direction the front of the bed is facing.
+     * @param unloadLast Whether to unload the last element or the first.
+     * @return Returns the position to unload.
+     */
+    private Point2D getUnloadPosition(Direction carrierDirection, boolean unloadLast) {
+        // Initializes unload position to current bed position if there exists an object to unload.
+        assert loadedObjects.peekFirst() != null;
+        Point2D unloadPosition = loadedObjects.peekFirst().getPosition();
+        // Unloads the cargo 1 unit either behind the bed if true or in front of the bed if false.
+        int unloadDirection = unloadLast ? 1 : -1;
+        switch (carrierDirection) {
+            case NORTH: translate(unloadPosition, 0, -unloadDirection); break;
+            case WEST: translate(unloadPosition, unloadDirection, 0); break;
+            case SOUTH: translate(unloadPosition, 0, unloadDirection); break;
+            case EAST: translate(unloadPosition, -unloadDirection, 0); break;
+        }
+        return unloadPosition;
     }
 
     // Moves the specified point by dx and dy in x and y direction respectivly.

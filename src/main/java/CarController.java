@@ -44,6 +44,22 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
+                // Specification of end of the frame this is where we want the car to turn around with respect to the
+                // current car speed.
+                double minX = 0 + car.getCurrentSpeed();
+                double maxX = 700 - car.getCurrentSpeed();
+                double minY = 0 + car.getCurrentSpeed();
+                double maxY = 500 - car.getCurrentSpeed();
+                // Below we have the current position of the car.
+                double origX = car.getPosition().getX();
+                double origY = car.getPosition().getY();
+                if (origX < minX || origX > maxX || origY < minY || origY > maxY) {
+                    car.stopEngine();
+                    car.turnLeft();
+                    car.turnLeft();
+                    car.startEngine();
+                    System.out.println(origY);
+                }
                 car.move();
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
