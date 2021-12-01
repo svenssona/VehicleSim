@@ -28,11 +28,15 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
-
         cc.cars.add(new Volvo240());
-
+        cc.cars.add(new Saab95());
+        cc.cars.add(new Scania<>());
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
+        //  Adds a buffered image for each car to the panel.
+        for (Car car : cc.cars) {
+            cc.frame.drawPanel.addCar(car);
+        }
 
         // Start the timer
         cc.timer.start();
@@ -63,10 +67,10 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                frame.drawPanel.moveit(x, y, car);
             }
+            // repaint() calls the paintComponent method of the panel
+            frame.drawPanel.repaint();
         }
     }
 

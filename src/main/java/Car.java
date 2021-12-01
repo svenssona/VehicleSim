@@ -40,6 +40,14 @@ abstract class Car implements Moveable {
     public int getNrDoors() { return nrDoors; }
 
     /**
+     * Returns the model name of your specific car.
+     * @return Returns the model name of your specific car.
+     */
+    public String getModelName() {
+        return modelName;
+    }
+
+    /**
      *  Returns the color of your specific car.
      * @return Returns the color of your specific car.
      */
