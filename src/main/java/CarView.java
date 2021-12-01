@@ -116,6 +116,38 @@ public class CarView extends JFrame{
             }
         });
 
+        // This is the actionListener for the turbo on button only
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.setTurbo(true);
+            }
+        });
+
+        // This is the actionListener for the turbo off button only
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.setTurbo(false);
+            }
+        });
+
+        // This is the actionListener for the lift bed button only
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.adjustBed(true);
+            }
+        });
+
+        // This is the actionListener for the lower bed button only
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.adjustBed(false);
+            }
+        });
+        
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 

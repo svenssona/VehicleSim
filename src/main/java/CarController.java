@@ -104,4 +104,23 @@ public class CarController {
             car.brake(brake);
         }
     }
+
+    void setTurbo(boolean state) {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                Saab95 saab = (Saab95) car;
+                saab.setTurbo(state);
+            }
+        }
+    }
+
+    void adjustBed(boolean state) {
+        for (Car car : cars) {
+            if (car instanceof Scania) {
+                Scania scania = (Scania) car;
+                double amount = state ? 200 : -200;
+                scania.raiseBed(amount);
+            }
+        }
+    }
 }
