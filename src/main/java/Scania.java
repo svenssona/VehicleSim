@@ -19,7 +19,7 @@ public class Scania<T extends Loadable> extends Car{
      */
     public Scania() {
         super(2, 300, Color.blue, "Scania",
-                new Point2D.Double(210,10));
+                new Point2D.Double(200, 0));
     }
 
     /**

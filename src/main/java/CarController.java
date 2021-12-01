@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /*
@@ -50,28 +52,41 @@ public class CarController {
             for (Car car : cars) {
                 // Specification of end of the frame this is where we want the car to turn around with respect to the
                 // current car speed.
-                double minX = 0 + car.getCurrentSpeed();
-                double maxX = 700 - car.getCurrentSpeed();
-                double minY = 0 + car.getCurrentSpeed();
-                double maxY = 500 - car.getCurrentSpeed();
+                double minX = 0;
+                double maxX = 700;
+                double minY = 0;
+                double maxY = 500;
                 // Below we have the current position of the car.
                 double origX = car.getPosition().getX();
                 double origY = car.getPosition().getY();
-                if (origX < minX || origX > maxX || origY < minY || origY > maxY) {
-                    car.stopEngine();
-                    car.turnLeft();
-                    car.turnLeft();
-                    car.startEngine();
-                    System.out.println(origY);
+                if (origX < minX ) {
+                    turnAround(car);
+                    car.setPosition(new Point((int) minX, (int) origY));
+                } else if (origX > maxX) {
+                    turnAround(car);
+                    car.setPosition(new Point((int) maxX, (int) origY));
+                } else if (origY < minY) {
+                    turnAround(car);
+                    car.setPosition(new Point((int) origX, (int) minY));
+                } else if (origY > maxY) {
+                    turnAround(car);
+                    car.setPosition(new Point((int) origX, (int) maxY));
                 }
                 car.move();
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
                 frame.drawPanel.moveit(x, y, car);
-            }
+                }
             // repaint() calls the paintComponent method of the panel
             frame.drawPanel.repaint();
         }
+    }
+
+    private void turnAround(Car car) {
+        car.stopEngine();
+        car.turnLeft();
+        car.turnLeft();
+        car.startEngine();
     }
 
     // Calls the gas method for each car once

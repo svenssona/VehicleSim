@@ -17,7 +17,7 @@ public class Saab95 extends Car implements LoadableCar{
      * Constructs a 125 horse-power, two-door, red SAAB95 with start position in (0, 0).
      */
     public Saab95(){
-        super(2, 125, Color.red, "Saab95", new Point2D.Double(110,10));
+        super(2, 125, Color.red, "Saab95", new Point2D.Double(100,0));
         this.turboOn = false;
     }
 
