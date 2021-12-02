@@ -132,12 +132,10 @@ class Bed <T extends Loadable> {
             Point2D unloadPosition = getUnloadPosition(carrierDirection, unloadLast);
             // Unloads the object of the queue to the new position for unloading.
             if (unloadLast) {
-                assert loadedObjects.peekLast() != null;
                 loadedObjects.peekLast().setLoadState(false);
                 loadedObjects.peekLast().setPosition(unloadPosition);
                 return loadedObjects.removeLast();
             } else {
-                assert loadedObjects.peekFirst() != null;
                 loadedObjects.peekFirst().setLoadState(false);
                 loadedObjects.peekFirst().setPosition(unloadPosition);
                 return loadedObjects.removeFirst();
@@ -155,7 +153,6 @@ class Bed <T extends Loadable> {
      */
     private Point2D getUnloadPosition(Direction carrierDirection, boolean unloadLast) {
         // Initializes unload position to current bed position if there exists an object to unload.
-        assert loadedObjects.peekFirst() != null;
         Point2D unloadPosition = loadedObjects.peekFirst().getPosition();
         // Unloads the cargo 1 unit either behind the bed if true or in front of the bed if false.
         int unloadDirection = unloadLast ? 1 : -1;
