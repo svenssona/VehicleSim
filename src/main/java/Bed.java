@@ -84,20 +84,28 @@ class Bed <T extends Loadable> {
      * Raises the trucks loading bed a desired amount caps out at maxAngle degrees.
      * @param deltaAngle
      */
-    public void raiseBed(double deltaAngle) {
-        double newAngle = this.bedAngle + deltaAngle;
-        // Statement makes sure we can't raise past our max angle.
-        this.bedAngle = newAngle < this.maxAngle ? newAngle : this.maxAngle;
+    public void raiseBed(double deltaAngle) throws IllegalArgumentException{
+        if (deltaAngle > 0) {
+            double newAngle = this.bedAngle + deltaAngle;
+            // Statement makes sure we can't raise past our max angle.
+            this.bedAngle = newAngle < this.maxAngle ? newAngle : this.maxAngle;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
      * Lowers the trucks loading bed a desired amount.
      * @param deltaAngle
      */
-    public void lowerBed(double deltaAngle) {
-        double newAngle = this.bedAngle - deltaAngle;
-        // Statement makes sure we can't lower past our min angle.
-        this.bedAngle = newAngle > this.minAngle ? newAngle : this.minAngle;
+    public void lowerBed(double deltaAngle) throws IllegalArgumentException{
+        if (deltaAngle > 0) {
+            double newAngle = this.bedAngle - deltaAngle;
+            // Statement makes sure we can't lower past our min angle.
+            this.bedAngle = newAngle > this.minAngle ? newAngle : this.minAngle;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
     // TODO Implement position and direction for all beds.
     /**

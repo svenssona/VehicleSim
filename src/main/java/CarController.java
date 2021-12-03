@@ -118,8 +118,11 @@ public class CarController {
         for (Car car : cars) {
             if (car instanceof Scania) {
                 Scania scania = (Scania) car;
-                double amount = state ? 200 : -200;
-                scania.raiseBed(amount);
+                if (state) {
+                    scania.raiseBed(200);
+                } else {
+                    scania.lowerBed(200);
+                }
             }
         }
     }
