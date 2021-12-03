@@ -1,2 +1,0 @@
-# TODO Document
-- Refactor cargo system and put it in Bed.
