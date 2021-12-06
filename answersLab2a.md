@@ -1,26 +1,29 @@
 # Answers for lab2a
 
-## Uppgift 2
+## Task 2
 
-Vilka klasser är beroende av varandra som inte bör vara det?
-- Det cykliska beroendet mellan CarView och CarController.
+What classes are dependent of each other that should not be?
+- CarView och CarController have a cyclical dependency.
 
-Finns det starkare beroenden än nödvändigt?
-- Fråga TA:s om agregation är svagare än composition för CarControl och Car.
+Are there stronger dependencies than necessary?
+- Fråga TA:s om aggregation är svagare än composition för CarControl och Car.
 
 Kan ni identifiera några brott mot övriga designprinciper vi pratat om i kursen?
-- Lösningen med Scania och turbo i CarController är ett brott mot openclose.
+- There are two methods in CarController that breach openclose relating to Scania and Turbo.
+- There are multiple listeners in the view.
 
-## Uppgift 3
+## Task 3
 
-Med avseende på Separation of Concern (SoC) och Single Responsibility Principle (SRP). 
-- CarController har en main som tas ut till en annan klass CarApplication. Detta ger
-tydligare ansvar (SoC & SRP).
+With regards to separation of Concern (SoC) and Single Responsibility Principle (SRP). 
+- CarController has a main function that should be made into its own application class.
+This gives us clearer responsibilities (SoC & SPR).
 
-TODO
+## Refactoring plan for lab2b
 
+1. Refactor Car to Vehicle.
+2. Add a marker interface Car.
+1. Create an application class.
+2. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
+3. Remove the point map from Drawpanel.
 
-##Refactoring plan for lab2b
-
-TODO: Skriv denna.
-Lös application samt cykliska dependencies.
+Everything can be done in parallel except for Car -> Vehicle and the interface.
