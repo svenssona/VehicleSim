@@ -91,9 +91,9 @@ abstract class Car implements Moveable {
 
     // Car engine features.
     /**
-     * Starts the engine and sets the current speed to 0.1.
+     * Starts the engine and sets the current speed to 1.
      */
-    public void startEngine() { currentSpeed = 0.1; }
+    public void startEngine() { currentSpeed = 1; }
     /**
      * Stops the engine and sets the current speed to 0.
      */

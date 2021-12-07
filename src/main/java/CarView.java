@@ -147,7 +147,24 @@ public class CarView extends JFrame{
                 carC.adjustBed(false);
             }
         });
-        
+
+        // This is the actionListener for the start all cars button.
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.startAllCars();
+            }
+        });
+
+        // This is the actionListener for the stop all cars button.
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.stopAllCars();
+            }
+        });
+
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 

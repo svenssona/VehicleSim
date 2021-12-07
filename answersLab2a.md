@@ -19,12 +19,13 @@ With regards to separation of Concern (SoC) and Single Responsibility Principle 
 This gives us clearer responsibilities (SoC & SPR).
 - Otherwise we think our model has applied these principles, we thought of these when writing the code. 
 For example unload cargo has a helper method called get getUnloadPosition which we implemented with regards to SoC. 
+
 ## Refactoring plan for lab2b
 
 1. Refactor Car to Vehicle.
 2. Add a marker interface Car.
-1. Create an application class.
-2. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
-3. Remove the point map from Drawpanel.
+3. Create an application class.
+4. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
+5. Remove the point map from Drawpanel.
 
 Everything can be done in parallel except for Car -> Vehicle and the interface.
