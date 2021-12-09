@@ -1,11 +1,6 @@
 import javax.swing.*;
 
 public class App {
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-
     public static void main(String[] args) {
         CarController cc = new CarController();
         cc.cars.add(new Volvo240());
