@@ -3,13 +3,14 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 public class DrawPanel extends JPanel {
 
-    HashMap<Vehicle, BufferedImage> carImages = new HashMap<>();
+    Map<Vehicle, BufferedImage> carImages = new HashMap<>();
 
     public void addCar(Vehicle car) {
         try {
