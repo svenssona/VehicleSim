@@ -182,5 +182,4 @@ abstract class Vehicle implements Moveable {
 
     // Abstract methods that needs to be implemented later.
     abstract double speedFactor();
-
 }
