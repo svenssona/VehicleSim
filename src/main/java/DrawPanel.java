@@ -9,14 +9,14 @@ import javax.swing.*;
 // This panel represent the animated part of the view with the car images.
 public class DrawPanel extends JPanel {
 
-    HashMap<Car, Point2D> carPoints = new HashMap<>();
-    HashMap<Car, BufferedImage> carImages = new HashMap<>();
+    HashMap<Vehicle, Point2D> carPoints = new HashMap<>();
+    HashMap<Vehicle, BufferedImage> carImages = new HashMap<>();
 
-    void moveit(int x, int y, Car car) {
+    void moveit(int x, int y, Vehicle car) {
         carPoints.get(car).setLocation(x, y);
     }
 
-    public void addCar(Car car) {
+    public void addCar(Vehicle car) {
         try {
             BufferedImage carImage = getCarImage(car.getModelName());
             carImages.put(car, carImage);
@@ -42,7 +42,7 @@ public class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Car car : carImages.keySet())  {
+        for (Vehicle car : carImages.keySet())  {
             Point2D carPoint = carPoints.get(car);
             g.drawImage(carImages.get(car), (int) carPoint.getX(), (int) carPoint.getY(), null); // see javadoc for more info on the parameters
         }

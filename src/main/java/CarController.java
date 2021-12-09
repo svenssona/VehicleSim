@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /*
@@ -23,7 +22,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<Vehicle> cars = new ArrayList<>();
 
     //methods:
 
@@ -36,7 +35,7 @@ public class CarController {
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
         //  Adds a buffered image for each car to the panel.
-        for (Car car : cc.cars) {
+        for (Vehicle car : cc.cars) {
             cc.frame.drawPanel.addCar(car);
         }
 
@@ -49,7 +48,7 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (Vehicle car : cars) {
                 // Specification of end of the frame this is where we want the car to turn around with respect to the
                 // current car speed.
                 double minX = 0;
@@ -82,7 +81,7 @@ public class CarController {
         }
     }
 
-    private void turnAround(Car car) {
+    private void turnAround(Vehicle car) {
         car.stopEngine();
         car.turnLeft();
         car.turnLeft();
@@ -92,7 +91,7 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             car.gas(gas);
         }
     }
@@ -100,13 +99,13 @@ public class CarController {
     // Calls the brake method for each car once.
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             car.brake(brake);
         }
     }
 
     void setTurbo(boolean state) {
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             if (car instanceof Saab95) {
                 Saab95 saab = (Saab95) car;
                 saab.setTurbo(state);
@@ -115,7 +114,7 @@ public class CarController {
     }
 
     void adjustBed(boolean state) {
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             if (car instanceof Scania) {
                 Scania scania = (Scania) car;
                 if (state) {
@@ -128,13 +127,13 @@ public class CarController {
     }
 
     void startAllCars() {
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             car.startEngine();
         }
     }
 
     void stopAllCars() {
-        for (Car car : cars) {
+        for (Vehicle car : cars) {
             car.stopEngine();
         }
     }

@@ -67,7 +67,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<h1 title="Class CarShop" class="title">Class CarShop&lt;T extends Car&gt;</h1>
+<h1 title="Class CarShop" class="title">Class CarShop&lt;T extends Vehicle&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">CarShop&lt;T&gt;</div>
@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 <dd><code>T</code> - The car shop can either take all different brands of cars or a specific brand.</dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CarShop&lt;T extends Car&gt;</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CarShop&lt;T extends Vehicle&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">This class handles all the repairs of a broken car.</div>
 </section>
@@ -166,24 +166,24 @@ loadScripts(document, 'script');</script>
 <ul class="member-list">
 <li>
 <section class="detail" id="intoService(T)">
-<h3 id="intoService(Car)">intoService</h3>
+<h3 id="intoService(Vehicle)">intoService</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">intoService</span><wbr><span class="parameters">(<a href="CarShop.html" title="type parameter in CarShop">T</a>&nbsp;car)</span></div>
 <div class="block">Puts a car into the car shop for service.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>car</code> - Car to put into the shop.</dd>
+<dd><code>car</code> - Vehicle to put into the shop.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="outFromService(T)">
-<h3 id="outFromService(Car)">outFromService</h3>
+<h3 id="outFromService(Vehicle)">outFromService</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">outFromService</span><wbr><span class="parameters">(<a href="CarShop.html" title="type parameter in CarShop">T</a>&nbsp;car)</span>
                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NoSuchElementException.html" title="class or interface in java.util" class="external-link">NoSuchElementException</a></span></div>
 <div class="block">Takes a car out from the car shop.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>car</code> - Car to take out from the shop.</dd>
+<dd><code>car</code> - Vehicle to take out from the shop.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NoSuchElementException.html" title="class or interface in java.util" class="external-link">NoSuchElementException</a></code></dd>
 </dl>

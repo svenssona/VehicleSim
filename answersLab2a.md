@@ -6,7 +6,7 @@ What classes are dependent of each other that should not be?
 - CarView och CarController have a cyclical dependency.
 
 Are there stronger dependencies than necessary?
-- Fråga TA:s om aggregation är svagare än composition för CarControl och Car.
+- Fråga TA:s om aggregation är svagare än composition för CarControl och Vehicle.
 
 Kan ni identifiera några brott mot övriga designprinciper vi pratat om i kursen?
 - There are two methods in CarController that breach openclose relating to Scania and Turbo.
@@ -22,10 +22,10 @@ For example unload cargo has a helper method called get getUnloadPosition which 
 
 ## Refactoring plan for lab2b
 
-1. Refactor Car to Vehicle.
-2. Add a marker interface Car.
+1. Refactor Vehicle to Vehicle.
+2. Add a marker interface Vehicle.
 3. Create an application class.
 4. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
 5. Remove the point map from Drawpanel.
 
-Everything can be done in parallel except for Car -> Vehicle and the interface.
+Everything can be done in parallel except for Vehicle -> Vehicle and the interface.

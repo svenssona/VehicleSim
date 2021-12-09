@@ -43,7 +43,7 @@ class Saab95Test {
     @Test
     void startEngineTest() {
         car.startEngine();
-        assertEquals(0.1, car.getCurrentSpeed());
+        assertEquals(1.0, car.getCurrentSpeed());
     }
     @Test
     void enginePowerTest() {

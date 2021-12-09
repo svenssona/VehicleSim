@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport<T extends LoadableCar> extends Car {
+public class CarTransport<T extends LoadableCar> extends Vehicle {
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;

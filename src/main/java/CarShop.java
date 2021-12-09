@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * This class handles all the repairs of a broken car.
  * @param <T> The car shop can either take all different brands of cars or a specific brand.
  */
-public class CarShop <T extends Car> {
+public class CarShop <T extends Vehicle> {
     
     private List<T> carsInShop;
     private int capacity;
@@ -22,7 +22,7 @@ public class CarShop <T extends Car> {
 
     /**
      * Puts a car into the car shop for service.
-     * @param car Car to put into the shop.
+     * @param car Vehicle to put into the shop.
      */
     public void intoService(T car) {
         if (carsInShop.size() < capacity) {
@@ -32,7 +32,7 @@ public class CarShop <T extends Car> {
 
     /**
      * Takes a car out from the car shop.
-     * @param car Car to take out from the shop.
+     * @param car Vehicle to take out from the shop.
      */
     public void outFromService(T car) throws NoSuchElementException {
         if (carsInShop.contains(car)) {
