@@ -10,14 +10,8 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController implements ActionListener {
     // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -26,47 +20,42 @@ public class CarController {
 
     //methods:
 
-    public void startTimer(){
-        timer.start();
-    }
-
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
 
-    public class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
-                // Specification of end of the frame this is where we want the car to turn around with respect to the
-                // current car speed.
-                double minX = 0;
-                double maxX = 700;
-                double minY = 0;
-                double maxY = 500;
-                // Below we have the current position of the car.
-                double origX = car.getPosition().getX();
-                double origY = car.getPosition().getY();
-                if (origX < minX ) {
-                    turnAround(car);
-                    car.setPosition(new Point((int) minX, (int) origY));
-                } else if (origX > maxX) {
-                    turnAround(car);
-                    car.setPosition(new Point((int) maxX, (int) origY));
-                } else if (origY < minY) {
-                    turnAround(car);
-                    car.setPosition(new Point((int) origX, (int) minY));
-                } else if (origY > maxY) {
-                    turnAround(car);
-                    car.setPosition(new Point((int) origX, (int) maxY));
-                }
-                car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y, car);
+
+    public void actionPerformed(ActionEvent e) {
+        for (Vehicle car : cars) {
+            // Specification of end of the frame this is where we want the car to turn around with respect to the
+            // current car speed.
+            double minX = 0;
+            double maxX = 700;
+            double minY = 0;
+            double maxY = 500;
+            // Below we have the current position of the car.
+            double origX = car.getPosition().getX();
+            double origY = car.getPosition().getY();
+            if (origX < minX ) {
+                turnAround(car);
+                car.setPosition(new Point((int) minX, (int) origY));
+            } else if (origX > maxX) {
+                turnAround(car);
+                car.setPosition(new Point((int) maxX, (int) origY));
+            } else if (origY < minY) {
+                turnAround(car);
+                car.setPosition(new Point((int) origX, (int) minY));
+            } else if (origY > maxY) {
+                turnAround(car);
+                car.setPosition(new Point((int) origX, (int) maxY));
             }
-            // repaint() calls the paintComponent method of the panel
-            frame.drawPanel.repaint();
+            car.move();
+            int x = (int) Math.round(car.getPosition().getX());
+            int y = (int) Math.round(car.getPosition().getY());
+            frame.drawPanel.moveit(x, y, car);
         }
+        // repaint() calls the paintComponent method of the panel
+        frame.drawPanel.repaint();
     }
 
     private void turnAround(Vehicle car) {
