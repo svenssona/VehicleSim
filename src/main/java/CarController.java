@@ -24,7 +24,6 @@ public class CarController implements ActionListener {
     * view to update its images. Change this method to your needs.
     * */
 
-
     public void actionPerformed(ActionEvent e) {
         for (Vehicle car : cars) {
             // Specification of end of the frame this is where we want the car to turn around with respect to the
@@ -50,9 +49,6 @@ public class CarController implements ActionListener {
                 car.setPosition(new Point((int) origX, (int) maxY));
             }
             car.move();
-            int x = (int) Math.round(car.getPosition().getX());
-            int y = (int) Math.round(car.getPosition().getY());
-            frame.drawPanel.moveit(x, y, car);
         }
         // repaint() calls the paintComponent method of the panel
         frame.drawPanel.repaint();

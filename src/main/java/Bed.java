@@ -136,7 +136,7 @@ class Bed <T extends Loadable> {
      * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
      */
     public T unloadCargo(Direction carrierDirection, boolean unloadLast) throws IllegalStateException {
-        if (this.getBedAngle() == getMinAngle()) {
+        if (this.getBedAngle() == getMinAngle() || loadedObjects.isEmpty()) {
             Point2D unloadPosition = getUnloadPosition(carrierDirection, unloadLast);
             // Unloads the object of the queue to the new position for unloading.
             if (unloadLast) {
