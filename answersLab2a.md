@@ -35,6 +35,7 @@ We think we have handled Soc and SRP well.
 4. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
 5. Remove the point map from Drawpanel.
 6. Fix the bad methods for turbo and scania.
+7. Remove * imports bad practice!!
 
 <<<<<<< HEAD
 Everything can be done in parallel except for Vehicle -> Vehicle and the interface.
