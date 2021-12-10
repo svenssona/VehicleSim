@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class CarTransportTest {
     private CarTransport<LoadableCar> carTransporter;
+    private static final double dummyAngle = -1;
 
     @BeforeEach
     void newCar() {
@@ -18,26 +19,26 @@ class CarTransportTest {
 
     @Test
     void raiseBedTest() {
-        carTransporter.raiseBed();
+        carTransporter.raiseBed(dummyAngle);
         assertEquals(90, carTransporter.getBedAngle());
     }
 
     @Test
     void lowerBedTest() {
-        carTransporter.raiseBed();
-        carTransporter.lowerBed();
+        carTransporter.raiseBed(dummyAngle);
+        carTransporter.lowerBed(dummyAngle);
         assertEquals(-20, carTransporter.getBedAngle());
     }
 
     @Test
     void raiseBedMaxTest() {
-        carTransporter.raiseBed();
+        carTransporter.raiseBed(dummyAngle);
         assertEquals(90, carTransporter.getBedAngle());
     }
 
     @Test
     void lowerBedMinTest() {
-        carTransporter.lowerBed();
+        carTransporter.lowerBed(dummyAngle);
         assertEquals(-20, carTransporter.getBedAngle());
     }
 
@@ -45,7 +46,7 @@ class CarTransportTest {
     void loadDiffCars() {
         // Makes sure we get a static compile time error when loading a Scania and that we can load both a Volvo240 and
         // Saab95 at the same time.
-        carTransporter.lowerBed();
+        carTransporter.lowerBed(dummyAngle);
         carTransporter.loadCargo(new Volvo240());
         carTransporter.loadCargo(new Saab95());
         // carTransporter.loadCargo(new Scania());
@@ -55,9 +56,9 @@ class CarTransportTest {
     void carStaysOnTransport() {
         Volvo240 volvo = new Volvo240();
 
-        carTransporter.lowerBed();
+        carTransporter.lowerBed(dummyAngle);
         carTransporter.loadCargo(volvo);
-        carTransporter.raiseBed();
+        carTransporter.raiseBed(dummyAngle);
 
         double carPositionX = carTransporter.getPosition().getX();
         double carPositionY = carTransporter.getPosition().getY();
