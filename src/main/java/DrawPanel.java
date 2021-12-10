@@ -15,7 +15,18 @@ public class DrawPanel extends JPanel {
     Map<Vehicle, BufferedImage> carImages = new HashMap<>();
 
     /**
-     * Adds a given vehicle to the Mop of all images.
+     * Initializes the panel.
+     * @param x Horizontal dimension for your panel.
+     * @param y Vertical dimension for your panel.
+     */
+    public DrawPanel(int x, int y) {
+        this.setDoubleBuffered(true);
+        this.setPreferredSize(new Dimension(x, y));
+        this.setBackground(Color.green);
+    }
+
+    /**
+     * Adds a given vehicle to the map of all images.
      * @param car The new vehicle image that you want to add.
      */
     public void addCarImage(Vehicle car) {
@@ -30,17 +41,6 @@ public class DrawPanel extends JPanel {
     // Helper method for when adding a car to the map, handles reading and loading.
     private BufferedImage getCarImage(String carName) throws IOException {
         return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
-    }
-
-    /**
-     * Initializes the panel.
-     * @param x Horizontal dimension for your panel.
-     * @param y Vertical dimension for your panel.
-     */
-    public DrawPanel(int x, int y) {
-        this.setDoubleBuffered(true);
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.green);
     }
 
     /**
