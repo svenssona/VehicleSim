@@ -11,16 +11,13 @@ public class DashboardPanel extends JPanel implements VehicleObserver{
 
     private final Map<Vehicle, JLabel> vehicleLables = new HashMap<>();
 
-    public DashboardPanel() {
-        this.setLayout(new GridLayout(3, 1));
-    }
-
     public void addVehicles(Vehicle vehicle) {
         String vehicleName = vehicle.getModelName();
         double speed = vehicle.getCurrentSpeed();
         JLabel newLabel = new JLabel(vehicleName + " : " + speed);
         vehicleLables.put(vehicle, newLabel);
         this.add(newLabel);
+        this.setLayout(new GridLayout(vehicleLables.size(), 1));
     }
 
     @Override

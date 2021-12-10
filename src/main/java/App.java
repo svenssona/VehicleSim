@@ -6,12 +6,6 @@ public class App {
         cc.getCars().add(new Volvo240());
         cc.getCars().add(new Saab95());
         cc.getCars().add(new Scania<>());
-        cc.getCars().add(new Volvo240());
-        cc.getCars().add(new Saab95());
-        cc.getCars().add(new Scania<>());
-        cc.getCars().add(new Volvo240());
-        cc.getCars().add(new Saab95());
-        cc.getCars().add(new Scania<>());
         // Start a new view and send a reference of self
         CarView frame = new CarView("CarSim 1.0", cc);
         DashboardPanel dashboard = new DashboardPanel();
