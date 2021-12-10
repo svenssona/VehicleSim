@@ -1,11 +1,13 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.IOException;
+import javax.swing.JPanel;
 import java.util.HashMap;
 import java.util.Map;
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 public class DrawPanel extends JPanel {
@@ -22,8 +24,13 @@ public class DrawPanel extends JPanel {
     }
 
     private BufferedImage getCarImage(String carName) throws IOException {
-        // Print an error message in case file is not found with a try/catch block
-        return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
+        // Print an error message in case file is not found with a try/catch block.
+        try {
+            return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
+        } catch (IOException e) {
+            System.out.println("Error: (file not found). No such car with that carName.jpg in the resources folder.");
+            return null;
+        }
     }
 
     // Initializes the panel and reads the images

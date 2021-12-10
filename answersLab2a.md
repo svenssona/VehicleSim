@@ -22,14 +22,13 @@ For example unload cargo has a helper method called get getUnloadPosition which 
 
 ## Refactoring plan for lab2b
 
-1. Refactor Car to Vehicle.
-2. Add a marker interface Car.
-3. Create an application class.
-4. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.
-5. Remove the point map from Drawpanel.
-6. Fix the bad methods for turbo and scania.
-7. Remove * imports bad practice!!
+~~1. Refactor Car to Vehicle.~~
+~~2. Add a marker interface Car.~~
+~~3. Create an application class.~~
+~~4. Fix the cyclical dependencies by moving the actionlisteners from the view to the controller.~~
+~~5. Remove the point map from Drawpanel.~~
+~~6. Fix the bad methods for turbo and scania.~~
+~~7. Remove * imports bad practice!!~~
 
 Everything can be done in parallel except for Car -> Vehicle and the interface.
 
-TODO: timern kanske inte skall ligga i controller.

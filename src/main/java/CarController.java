@@ -1,6 +1,6 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /*
@@ -8,10 +8,17 @@ import java.util.ArrayList;
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
-
 public class CarController implements ActionListener {
 
-    ArrayList<Vehicle> cars = new ArrayList<>(); // A list of cars, modify if needed
+    private final ArrayList<Vehicle> cars; // A list of cars, modify if needed
+
+    public CarController() {
+        cars = new ArrayList<>();
+    }
+
+    public ArrayList<Vehicle> getCars() {
+        return cars;
+    }
 
     /**
      * Each time the CarController gets a signal from CarView it performs the action.
