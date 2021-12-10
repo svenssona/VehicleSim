@@ -187,14 +187,26 @@ abstract class Vehicle implements Moveable {
     }
 
     // Publisher methods for our observers.
+
+    /**
+     * Subscribes the new observer to this publisher.
+     * @param newObserver The new VehicleObserver that wants to listen.
+     */
     public void addObserver(VehicleObserver newObserver) {
         vehicleObservers.add(newObserver);
     }
 
+    /**
+     * Removes an existing observer so that it no longer listens.
+     * @param existingObserver Specifies which VehicleObserver to remove.
+     */
     public void removeObserver(VehicleObserver existingObserver) {
         vehicleObservers.remove(existingObserver);
     }
 
+    /**
+     * Updates all observers when something new has happened that they need to know
+     */
     public void notifyObservers() {
         for (VehicleObserver observer : vehicleObservers) {
             observer.vehicleUpdate();

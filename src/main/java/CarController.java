@@ -3,19 +3,19 @@ import java.awt.event.ActionListener;
 import java.awt.Point;
 import java.util.ArrayList;
 
-/*
+/**
 * This class represents the Controller part in the MVC pattern.
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
 public class CarController implements ActionListener {
 
-    private final ArrayList<Vehicle> cars; // A list of cars, modify if needed
+    private final ArrayList<Vehicle> cars = new ArrayList<>(); // A list of cars, modify if needed
 
-    public CarController() {
-        cars = new ArrayList<>();
-    }
-
+    /**
+     *
+     * @return Returns the list of cars in the CarController.
+     */
     public ArrayList<Vehicle> getCars() {
         return cars;
     }
@@ -52,6 +52,10 @@ public class CarController implements ActionListener {
         }
     }
 
+    /**
+     * Stops the car turns it 180 degrees and then starts engine again.
+     * @param car Takes in a Vehicle that it can turn around.
+     */
     private void turnAround(Vehicle car) {
         car.stopEngine();
         car.turnLeft();
@@ -60,6 +64,11 @@ public class CarController implements ActionListener {
     }
 
     // Calls the gas method for each car once
+
+    /**
+     * Increaments the specific Vehicle by a given amount.
+     * @param amount Amount of gas that you want to gas with.
+     */
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle car : cars) {
@@ -68,6 +77,11 @@ public class CarController implements ActionListener {
     }
 
     // Calls the brake method for each car once.
+
+    /**
+     * Slows down the specific vehicle.
+     * @param amount Given amount that you want to slow down the car with.
+     */
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Vehicle car : cars) {
@@ -75,6 +89,10 @@ public class CarController implements ActionListener {
         }
     }
 
+    /**
+     * Turns on and off the turbo for vehicles with turbo.
+     * @param state true == On; false == Off;
+     */
     void setTurbo(boolean state) {
         for (Vehicle car : cars) {
             if (car instanceof HasTurbo) {
@@ -84,6 +102,10 @@ public class CarController implements ActionListener {
         }
     }
 
+    /**
+     * Adjusts the bed for vehicles with a bed.
+     * @param state If true then the bed raises if false it lowers it.
+     */
     void adjustBed(boolean state) {
         for (Vehicle car : cars) {
             if (car instanceof HasBed) {
@@ -97,12 +119,18 @@ public class CarController implements ActionListener {
         }
     }
 
+    /**
+     * Turns on the engine for all vehicles.
+     */
     void startAllCars() {
         for (Vehicle car : cars) {
             car.startEngine();
         }
     }
 
+    /**
+     * Turns off the engine for all vehicles.
+     */
     void stopAllCars() {
         for (Vehicle car : cars) {
             car.stopEngine();

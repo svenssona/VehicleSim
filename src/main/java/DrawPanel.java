@@ -14,7 +14,12 @@ public class DrawPanel extends JPanel {
 
     Map<Vehicle, BufferedImage> carImages = new HashMap<>();
 
-    public void addCar(Vehicle car) {
+    /**
+     * Adds a given vehicle to the Mop of all images.
+     * @param car The new vehicle image that you want to add.
+     */
+    public void addCarImage(Vehicle car) {
+        // Prints a stack tree message in case file is not found in the try block.
         try {
             BufferedImage carImage = getCarImage(car.getModelName());
             carImages.put(car, carImage);
@@ -22,32 +27,34 @@ public class DrawPanel extends JPanel {
             ex.printStackTrace();
         }
     }
-
+    // Helper method for when adding a car to the map, handles reading and loading.
     private BufferedImage getCarImage(String carName) throws IOException {
-        // Print an error message in case file is not found with a try/catch block.
-        try {
-            return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
-        } catch (IOException e) {
-            System.out.println("Error: (file not found). No such car with that carName.jpg in the resources folder.");
-            return null;
-        }
+        return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
     }
 
-    // Initializes the panel and reads the images
+    /**
+     * Initializes the panel.
+     * @param x Horizontal dimension for your panel.
+     * @param y Vertical dimension for your panel.
+     */
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
     }
 
-    // This method is called each time the panel updates/refreshes/repaints itself
+    /**
+     * This method is called each time the panel updates/refreshes/repaints itself.
+     * @param g Graphical component on which we draw.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Vehicle car : carImages.keySet())  {
             Point2D carPoint = car.getPosition();
-            // see javadoc for more info on the parameters
-            g.drawImage(carImages.get(car), (int) Math.round(carPoint.getX()), (int) Math.round(carPoint.getY()), null);
+            // See javadoc for more info on the parameters.
+            g.drawImage(carImages.get(car), (int) Math.round(carPoint.getX()),
+                    (int) Math.round(carPoint.getY()), null);
         }
     }
 }

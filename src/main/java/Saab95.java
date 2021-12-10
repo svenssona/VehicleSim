@@ -33,9 +33,10 @@ public class Saab95 extends Vehicle implements LoadableCar, HasTurbo {
      * @return the speed factor that determines how fast the speed increases/decreases.
      */
     double speedFactor(){
+        int wheelLock = isLoaded? 0 : 1;
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return this.getEnginePower() * 0.01 * turbo;
+        return this.getEnginePower() * 0.01 * turbo * wheelLock;
     }
 
     /**

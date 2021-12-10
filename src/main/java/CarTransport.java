@@ -47,7 +47,7 @@ public class CarTransport<T extends LoadableCar> extends Vehicle implements HasB
     /**
      * Unloads a car from the car transport.
      * @return The unloaded car.
-     * @throws IllegalStateException If the bed is not at the lower position then we can't unload.
+     * @throws IllegalStateException If the bed is not at the lower position or no cars loaded then we can't unload.
      */
     public T unloadCargo() throws IllegalStateException {
         return this.bed.unloadCargo(getDirection(), true);
@@ -62,35 +62,26 @@ public class CarTransport<T extends LoadableCar> extends Vehicle implements HasB
     }
 
     // Getters
-
-    /**
-     * @return Returns the bed angle for our car transport.
+    /** Returns the current bed angle for our car transport.
+     * @return Returns the current bed angle for our car transport.
      */
     public double getBedAngle() {
         return this.bed.getBedAngle();
     }
-
-    /**
+    /** Returns the min angle for the bed in car transport.
      * @return Min angle
      */
     public static double getMinAngle() {
         return minAngle;
     }
-
-    /**
+    /**  Returns the max angle for the bed in car transport.
      * @return Max angle
      */
-    public static double getMaxAngle() {
-        return maxAngle;
-    }
-
-    /**
+    public static double getMaxAngle() { return maxAngle; }
+    /** Returns the capacity of the car transport.
      * @return Capacity of the car transport.
      */
-    public static int getCapacity() {
-        return capacity;
-    }
-
+    public static int getCapacity() { return capacity; }
     /**
      * Returns the car transport.
      * @return Returns the car transport.
@@ -108,7 +99,6 @@ public class CarTransport<T extends LoadableCar> extends Vehicle implements HasB
     }
 
     // The car transport can only have in two positions (down or up).
-
     /**
      * Raises the trucks loading bed from the min angle -> max angle.
      */

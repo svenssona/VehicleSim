@@ -1,10 +1,8 @@
+import java.awt.Color;
+import java.awt.geom.Point2D;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-import java.awt.geom.Point2D;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Class for testing the possible operations on CarTransport.

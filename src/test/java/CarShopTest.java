@@ -6,7 +6,7 @@ class CarShopTest {
     @Test
     void genericCarShopTest() {
         // Tests that we can have two different brands of Cars in our shop.
-        CarShop<Vehicle> carShop = new CarShop<>(2);
+        CarShop<Car> carShop = new CarShop<>(2);
         carShop.intoService(new Volvo240());
         carShop.intoService(new Saab95());
         assertEquals(2, carShop.getCarsInShop().size());

@@ -1,7 +1,7 @@
 /**
- * An interface for beeing a truck.
+ * An interface for being a truck.
  */
 public interface HasBed {
-    public void raiseBed(double deltaAngle);
-    public void lowerBed(double deltaAngle);
+     void raiseBed(double deltaAngle);
+     void lowerBed(double deltaAngle);
 }

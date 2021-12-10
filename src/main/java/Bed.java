@@ -44,41 +44,27 @@ class Bed <T extends Loadable> {
     /**
      * Returns the bed angle.
      */
-    public double getBedAngle() {
-        return bedAngle;
-    }
-
+    public double getBedAngle() { return bedAngle; }
     /**
      *
      * @return Returns the bed max angle.
      */
-    public double getMaxAngle() {
-        return this.maxAngle;
-    }
-
+    public double getMaxAngle() { return this.maxAngle; }
     /**
      *
      * @return Returns the beds min angle.
      */
-    public double getMinAngle() {
-        return this.minAngle;
-    }
-
+    public double getMinAngle() { return this.minAngle; }
     /**
      *
      * @return Returns the capacity of the bed.
      */
-    public int getCapacity() {
-        return capacity;
-    }
-
+    public int getCapacity() { return capacity; }
     /** 
      *
      * @return Returns the loaded objects.
      */
-    public LinkedList<T> getCargo() {
-        return this.loadedObjects;
-    }
+    public LinkedList<T> getCargo() { return this.loadedObjects; }
 
     /**
      * Raises the trucks loading bed a desired amount caps out at maxAngle degrees.
@@ -173,7 +159,7 @@ class Bed <T extends Loadable> {
         return unloadPosition;
     }
 
-    // Moves the specified point by dx and dy in x and y direction respectivly.
+    // Moves the specified point by a difference x (dx) and by a difference y (dy) in each direction respectively.
     private void translate(Point2D position, double dx, double dy) {
         position.setLocation(position.getX() + dx, position.getY() + dy);
     }

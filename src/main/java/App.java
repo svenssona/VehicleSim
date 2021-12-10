@@ -10,7 +10,7 @@ public class App {
         CarView frame = new CarView("CarSim 1.0", cc);
         //  Adds a buffered image for each car to the panel and subscribes the view as listener to our model.
         for (Vehicle car : cc.getCars()) {
-            frame.drawPanel.addCar(car);
+            frame.drawPanel.addCarImage(car);
             car.addObserver(frame);
         }
 
