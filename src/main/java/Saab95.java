@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class Saab95 extends Vehicle implements LoadableCar {
+public class Saab95 extends Vehicle implements LoadableCar, HasTurbo {
 
     private boolean turboOn;
     private boolean isLoaded;
@@ -25,8 +25,8 @@ public class Saab95 extends Vehicle implements LoadableCar {
      * Sets the turbo on or off.
      * @param TurboOn This is a boolean, either you have turbo on or you do not.
      */
-    public void setTurbo(boolean TurboOn) {
-        this.turboOn = TurboOn;
+    public void setTurbo(boolean turboOn) {
+        this.turboOn = turboOn;
     }
 
     /**

@@ -79,21 +79,21 @@ public class CarController implements ActionListener {
 
     void setTurbo(boolean state) {
         for (Vehicle car : cars) {
-            if (car instanceof Saab95) {
-                Saab95 saab = (Saab95) car;
-                saab.setTurbo(state);
+            if (car instanceof HasTurbo) {
+                HasTurbo withTurbo = (HasTurbo) car;
+                withTurbo.setTurbo(state);
             }
         }
     }
 
     void adjustBed(boolean state) {
         for (Vehicle car : cars) {
-            if (car instanceof Scania) {
-                Scania scania = (Scania) car;
+            if (car instanceof HasBed) {
+                HasBed withBed = (HasBed) car;
                 if (state) {
-                    scania.raiseBed(200);
+                    withBed.raiseBed(200);
                 } else {
-                    scania.lowerBed(200);
+                    withBed.lowerBed(200);
                 }
             }
         }
