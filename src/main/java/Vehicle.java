@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.lang.IllegalArgumentException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This is an abstract class defining the basic functions of a vehicle.
@@ -21,6 +23,7 @@ abstract class Vehicle implements Moveable {
     private String modelName; // The vehicle model name.
     private Point2D position; // Holds (x,y) position of the vehicle.
     private Direction direction; // Direction value of the vehicle, North = 0, West = 1, South = 2, East = 3.
+    private List<VehicleObserver> vehicleObservers; // Holds all the listeners to this class.
     
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
@@ -29,6 +32,7 @@ abstract class Vehicle implements Moveable {
         this.modelName = modelName;
         this.position = position;
         this.direction = Direction.NORTH;
+        vehicleObservers = new LinkedList<>();
         stopEngine();
     }
 
@@ -114,6 +118,8 @@ abstract class Vehicle implements Moveable {
             case EAST: translate(this.position, this.getCurrentSpeed(), 0);
                 break;
         }
+        // Notifies our observers that the car has moved.
+        notifyObservers();
     }
 
     // Moves the specified point by dx and dy in x and y direction respectivly.
@@ -178,6 +184,21 @@ abstract class Vehicle implements Moveable {
      */
     private void decrementSpeed(double amount) {
         currentSpeed = Math.max(0, getCurrentSpeed() - speedFactor() * amount);
+    }
+
+    // Publisher methods for our observers.
+    public void addObserver(VehicleObserver newObserver) {
+        vehicleObservers.add(newObserver);
+    }
+
+    public void removeObserver(VehicleObserver existingObserver) {
+        vehicleObservers.remove(existingObserver);
+    }
+
+    public void notifyObservers() {
+        for (VehicleObserver observer : vehicleObservers) {
+            observer.vehicleUpdate();
+        }
     }
 
     // Abstract methods that needs to be implemented later.
