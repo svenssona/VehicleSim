@@ -6,14 +6,22 @@ public class App {
         cc.getCars().add(new Volvo240());
         cc.getCars().add(new Saab95());
         cc.getCars().add(new Scania<>());
+        cc.getCars().add(new Volvo240());
+        cc.getCars().add(new Saab95());
+        cc.getCars().add(new Scania<>());
+        cc.getCars().add(new Volvo240());
+        cc.getCars().add(new Saab95());
+        cc.getCars().add(new Scania<>());
         // Start a new view and send a reference of self
         CarView frame = new CarView("CarSim 1.0", cc);
+        DashboardPanel dashboard = new DashboardPanel();
         //  Adds a buffered image for each car to the panel and subscribes the view as listener to our model.
         for (Vehicle car : cc.getCars()) {
             frame.drawPanel.addCarImage(car);
             car.addObserver(frame);
+            dashboard.addVehicles(car);
         }
-
+        frame.add(dashboard);
         int delay = 10;
         Timer timer = new Timer(delay, cc);
 
