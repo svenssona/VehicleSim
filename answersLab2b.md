@@ -19,6 +19,7 @@ The controller is no longer dependent on the view.
 - Hur bör de olika komponenterna kommunicera med varandra?
 
 
-
+## Task 4
+- Factory Method lets us hide the model from the application hiding abstraction for the user.
 ## Task 6
 - Kan något designmönster vara relevant att använda för denna utökning?
