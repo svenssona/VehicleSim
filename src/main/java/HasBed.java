@@ -2,6 +2,6 @@
  * An interface for beeing a truck.
  */
 public interface HasBed {
-    public void rasieBed(double delta);
-    public void lowerBed(double delta);
+    public void raiseBed(double deltaAngle);
+    public void lowerBed(double deltaAngle);
 }

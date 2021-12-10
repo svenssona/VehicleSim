@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 1.0.0
  */
-public class CarTransport<T extends LoadableCar> extends Vehicle {
+public class CarTransport<T extends LoadableCar> extends Vehicle implements HasBed {
 
     private final static double trimFactor = 1.5;
     private final static double maxAngle = 90;
@@ -112,7 +112,7 @@ public class CarTransport<T extends LoadableCar> extends Vehicle {
     /**
      * Raises the trucks loading bed from the min angle -> max angle.
      */
-    public void raiseBed() {
+    public void raiseBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {
             this.bed.raiseBed(CarTransport.maxAngle - CarTransport.minAngle);
         }
@@ -121,7 +121,7 @@ public class CarTransport<T extends LoadableCar> extends Vehicle {
     /**
      * Lowers the trucks loading bed from the max angle -> min angle.
      */
-    public void lowerBed() {
+    public void lowerBed(double deltaAngle) {
         if (this.getCurrentSpeed() == 0) {
             this.bed.lowerBed(CarTransport.maxAngle - CarTransport.minAngle);
         }
