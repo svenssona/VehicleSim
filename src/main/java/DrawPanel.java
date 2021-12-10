@@ -12,7 +12,7 @@ import java.util.Map;
 // This panel represent the animated part of the view with the car images.
 public class DrawPanel extends JPanel {
 
-    Map<Vehicle, BufferedImage> carImages = new HashMap<>();
+    private final Map<Vehicle, BufferedImage> carImages = new HashMap<>();
 
     /**
      * Adds a given vehicle to the Mop of all images.
