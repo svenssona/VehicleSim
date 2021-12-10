@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,19 +10,13 @@ import java.util.ArrayList;
  */
 
 public class CarController implements ActionListener {
-    // member fields:
 
-    // The frame that represents this instance View of the MVC pattern
-    CarView frame;
-    // A list of cars, modify if needed
-    ArrayList<Vehicle> cars = new ArrayList<>();
+    ArrayList<Vehicle> cars = new ArrayList<>(); // A list of cars, modify if needed
 
-    //methods:
-
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-
+    /**
+     * Each time the CarController gets a signal from CarView it performs the action.
+     * @param e Action event from someone pressing a button on our controller.
+     */
     public void actionPerformed(ActionEvent e) {
         for (Vehicle car : cars) {
             // Specification of end of the frame this is where we want the car to turn around with respect to the
@@ -50,8 +43,6 @@ public class CarController implements ActionListener {
             }
             car.move();
         }
-        // repaint() calls the paintComponent method of the panel
-        frame.drawPanel.repaint();
     }
 
     private void turnAround(Vehicle car) {

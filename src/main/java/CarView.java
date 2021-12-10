@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements VehicleObserver {
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -176,5 +176,13 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    /**
+     * Updates the observer if the publisher sends a signal and repaints the view.
+     */
+    @Override
+    public void vehicleUpdate() {
+        repaint();
     }
 }
