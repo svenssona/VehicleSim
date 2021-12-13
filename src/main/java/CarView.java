@@ -27,8 +27,8 @@ public class CarView extends JFrame implements VehicleObserver {
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
     JPanel controlPanel = new JPanel();
     JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
     JLabel gasLabel = new JLabel("Amount of gas");
+    JSpinner gasSpinner;
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -54,7 +54,6 @@ public class CarView extends JFrame implements VehicleObserver {
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(e -> gasAmount = (int) ((JSpinner)e.getSource()).getValue());
-
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
