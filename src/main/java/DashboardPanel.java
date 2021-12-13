@@ -1,4 +1,6 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.util.Map;
 import java.util.HashMap;
 import javax.swing.JLabel;
@@ -9,23 +11,24 @@ import javax.swing.JPanel;
  */
 public class DashboardPanel extends JPanel implements VehicleObserver{
 
-    private final Map<Vehicle, JLabel> vehicleLables = new HashMap<>();
+    private final Map<Vehicle, JLabel> vehicleLabels = new HashMap<>();
 
     public void addVehicles(Vehicle vehicle) {
         String vehicleName = vehicle.getModelName();
         double speed = vehicle.getCurrentSpeed();
         JLabel newLabel = new JLabel(vehicleName + " : " + speed);
-        vehicleLables.put(vehicle, newLabel);
+        vehicleLabels.put(vehicle, newLabel);
         this.add(newLabel);
-        this.setLayout(new GridLayout(vehicleLables.size(), 1));
+        this.setLayout(new GridLayout(vehicleLabels.size(), 1));
+        this.setBackground(Color.yellow);
     }
 
     @Override
     public void vehicleUpdate() {
-        for (Vehicle vehicle : vehicleLables.keySet()) {
+        for (Vehicle vehicle : vehicleLabels.keySet()) {
             String vehicleName = vehicle.getModelName();
             double speed = vehicle.getCurrentSpeed();
-            vehicleLables.get(vehicle).setText(vehicleName + " : " + speed);
+            vehicleLabels.get(vehicle).setText(vehicleName + " : " + speed);
         }
     }
 
