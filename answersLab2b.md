@@ -5,8 +5,8 @@ smartare, dummare eller tunnare?
 - Vilka av dessa brister åtgärdade ni med er nya design från del 2? Hur då? Vilka brister åtgärdade ni inte?
 
 The application was mostly in CarController, so the controller needed to be made thinner and handle much less logic. 
-The view was already pretty dumb, so no changes here. We also thought it reasonable to have the buttons here, as the
-view is allowed to interact with the controller that way. 
+The view was already pretty dumb, so no changes were needed. We also thought it reasonable to have the buttons in here, 
+as the view is allowed to interact with the controller that way.
 There was a cyclic dependency between view and controller, lowering cohesion of the components of MVC.
 The model was already smart and completely independent from view, controller and application.
 
