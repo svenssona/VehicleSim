@@ -7,8 +7,12 @@ import java.awt.*;
 public class VehicleManger extends JPanel {
     private final CarController carC;
     private final VehicleFactory vehicleFactory;
+    private final CarView carView;
+    private final DashboardPanel dashboardPanel;
 
-    public VehicleManger(VehicleFactory vehicleFactory, CarController carC) {
+    public VehicleManger(VehicleFactory vehicleFactory, CarController carC, CarView carView, DashboardPanel dashboardPanel)  {
+        this.dashboardPanel = dashboardPanel;
+        this.carView = carView;
         this.carC = carC;
         this.vehicleFactory = vehicleFactory;
         // A spinner with all available models that we can create in the vehicle factory.
@@ -41,11 +45,17 @@ public class VehicleManger extends JPanel {
     }
 
     public void addVehicle(String modelName) {
-        carC.getCars().add(vehicleFactory.create(modelName));
+        Vehicle newCar = vehicleFactory.create(modelName);
+        carC.getCars().add(newCar);
+        carView.drawPanel.addCarImage(newCar);
+        newCar.addObserver(carView);
+        dashboardPanel.addVehicles(newCar);
+        carView.repaint();
     }
 
     public void removeVehicles() {
         carC.getCars().remove(0);
+        carView.repaint();
     }
 
     @Override

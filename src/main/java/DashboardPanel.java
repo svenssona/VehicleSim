@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 /** 
  * View that shows what vehicle is driving and shows the speed of the vehicle.
  */
-public class DashboardPanel extends JPanel implements VehicleObserver{
+public class DashboardPanel extends JPanel implements VehicleObserver {
 
     private final Map<Vehicle, JLabel> vehicleLabels = new HashMap<>();
 
