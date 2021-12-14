@@ -2,22 +2,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
 * This class represents the Controller part in the MVC pattern.
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
-public class CarController implements ActionListener {
+public class CarController implements ActionListener, VehicleListener {
 
-    private final ArrayList<Vehicle> cars = new ArrayList<>(); // A list of cars, modify if needed
+    private List<Vehicle> cars = new ArrayList<>(); // A list of cars, modify if needed
 
     /**
-     *
+     * Updates the internal vehicle list.
      * @return Returns the list of cars in the CarController.
      */
-    public ArrayList<Vehicle> getCars() {
-        return cars;
+    public void updateVehicles(List<Vehicle> vehicles) {
+        cars = vehicles;
     }
 
     /**
