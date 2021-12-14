@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /**
  * This is a view that lets us add and remove vehicles through buttons in our GUI.
@@ -7,8 +8,7 @@ import java.awt.*;
 public class VehicleManger extends JPanel implements VehicleListener {
 
     private final VehicleFactory vehicleFactory;
-    private List<Vehicle> currentVehicles;
-    private Model model;
+    private final Model model;
     private JSpinner removeSpinner;
 
     public VehicleManger(VehicleFactory vehicleFactory, Model model)  {
@@ -16,11 +16,10 @@ public class VehicleManger extends JPanel implements VehicleListener {
         this.model = model;
         // A spinner with all available models that we can create in the vehicle factory.
         SpinnerModel availableVehicles = new SpinnerListModel(vehicleFactory.getAvailableModels());
-        // availableVehicles.addChangeListener();
+        // availableVehicles.addChangeListener(e -> modelName = (String) ((JSpinner) e.getSource()).getValue());
         JSpinner addSpinner = new JSpinner(availableVehicles);
         // A spinner with all the current Vehicles initialized.
         SpinnerModel currentSpinner = new SpinnerListModel(model.getVehicles());
-        // currentSpinner.addChangeListener();
         removeSpinner = new JSpinner(currentSpinner);
 
         this.setLayout(new GridBagLayout());
@@ -38,9 +37,9 @@ public class VehicleManger extends JPanel implements VehicleListener {
         this.add(removeSpinner);
 
         // This actionListener is for the add button only
-        addButton.addActionListener(e -> addVehicle("Saab95"));
+        addButton.addActionListener(e -> addVehicle((String) addSpinner.getValue()));
         // This actionListener is for the remove button only
-        removeButton.addActionListener(e -> removeVehicle("TODO"));
+        removeButton.addActionListener(e -> removeVehicle((Vehicle) removeSpinner.getValue()));
     }
 
     public void addVehicle(String modelName) {
@@ -54,7 +53,7 @@ public class VehicleManger extends JPanel implements VehicleListener {
 
     @Override
     public void updateVehicles(List<Vehicle> vehicles) {
-        SpinnerModel currentSpinner = new SpinnerListModel(model.getVehicles());
+        SpinnerModel currentSpinner = new SpinnerListModel(vehicles);
         removeSpinner = new JSpinner(currentSpinner);
     }
 

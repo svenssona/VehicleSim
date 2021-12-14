@@ -26,7 +26,7 @@ public class CarView extends JFrame implements ActionListener {
     private int gasAmount = 0;
 
     CarController carC;  // The controller member that we need to call when an action is performed.
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
     JPanel gasPanel = new JPanel();
     JLabel gasLabel = new JLabel("Amount of gas");
@@ -41,8 +41,9 @@ public class CarView extends JFrame implements ActionListener {
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public CarView(String frameName, CarController cc) {
+    public CarView(String frameName, CarController cc, DrawPanel drawPanel) {
         this.carC = cc;
+        this.drawPanel = drawPanel;
         initComponents(frameName);
     }
 
@@ -112,10 +113,10 @@ public class CarView extends JFrame implements ActionListener {
     }
 
     /**
-     * Updates the observer if the publisher sends a signal and repaints the view.
+     * Invoked when an action occurs.
+     *
+     * @param e the event to be processed
      */
     @Override
-    public void actionPreformed(ActionEvent e) {
-        repaint();
-    }
+    public void actionPerformed(ActionEvent e) { repaint(); }
 }

@@ -9,8 +9,9 @@ public class Model {
         return vehicles;
     }
 
-    public void addListener(VehicleListener vehicle) {
-        this.listeners.add(vehicle);
+    public void addListener(VehicleListener listener) {
+        this.listeners.add(listener);
+        listener.updateVehicles(this.vehicles);
     }
     
     public void addVehicle(Vehicle vehicle) {
@@ -27,7 +28,7 @@ public class Model {
         }
     }
 
-    private void notifyListeners(){
+    public void notifyListeners(){
         for (VehicleListener listener : listeners) {
             listener.updateVehicles(this.vehicles);
         }

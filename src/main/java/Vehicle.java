@@ -23,7 +23,6 @@ abstract class Vehicle implements Moveable {
     private String modelName; // The vehicle model name.
     private Point2D position; // Holds (x,y) position of the vehicle.
     private Direction direction; // Direction value of the vehicle, North = 0, West = 1, South = 2, East = 3.
-    private List<VehicleObserver> vehicleObservers; // Holds all the listeners to this class.
     
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, Point2D position) {
         this.nrDoors = nrDoors; 
@@ -32,7 +31,6 @@ abstract class Vehicle implements Moveable {
         this.modelName = modelName;
         this.position = position;
         this.direction = Direction.NORTH;
-        vehicleObservers = new LinkedList<>();
         stopEngine();
     }
 
@@ -118,8 +116,6 @@ abstract class Vehicle implements Moveable {
             case EAST: translate(this.position, this.getCurrentSpeed(), 0);
                 break;
         }
-        // Notifies our observers that the car has moved.
-        notifyObservers();
     }
 
     // Moves the specified point by dx and dy in x and y direction respectivly.
@@ -186,31 +182,9 @@ abstract class Vehicle implements Moveable {
         currentSpeed = Math.max(0, getCurrentSpeed() - speedFactor() * amount);
     }
 
-    // Publisher methods for our observers.
-
-    /**
-     * Subscribes the new observer to this publisher.
-     * @param newObserver The new VehicleObserver that wants to listen.
-     */
-    public void addObserver(VehicleObserver newObserver) {
-        vehicleObservers.add(newObserver);
-    }
-
-    /**
-     * Removes an existing observer so that it no longer listens.
-     * @param existingObserver Specifies which VehicleObserver to remove.
-     */
-    public void removeObserver(VehicleObserver existingObserver) {
-        vehicleObservers.remove(existingObserver);
-    }
-
-    /**
-     * Updates all observers when something new has happened that they need to know
-     */
-    public void notifyObservers() {
-        for (VehicleObserver observer : vehicleObservers) {
-            observer.vehicleUpdate();
-        }
+    @Override
+    public String toString() {
+        return modelName;
     }
 
     // Abstract methods that needs to be implemented later.

@@ -1,15 +1,19 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /** 
  * View that shows what vehicle is driving and shows the speed of the vehicle.
  */
-public class DashboardPanel extends JPanel implements VehicleObserver, VehicleListener {
+public class DashboardPanel extends JPanel implements ActionListener, VehicleListener {
 
     private Map<Vehicle, JLabel> vehicleLabels = new HashMap<>();
 
@@ -24,17 +28,19 @@ public class DashboardPanel extends JPanel implements VehicleObserver, VehicleLi
     }
 
     @Override
-    public void vehicleUpdate() {
+    public void actionPerformed(ActionEvent e) {
+        DecimalFormat df = new DecimalFormat("0.00");
         for (Vehicle vehicle : vehicleLabels.keySet()) {
             String vehicleName = vehicle.getModelName();
             double speed = vehicle.getCurrentSpeed();
-            vehicleLabels.get(vehicle).setText(vehicleName + " : " + speed);
+            vehicleLabels.get(vehicle).setText(vehicleName + " : " + df.format(speed));
         }
     }
 
     @Override
-    public void vehicleUpdate(List<Vehicle> vehicles) {
+    public void updateVehicles(List<Vehicle> vehicles) {
         vehicleLabels = new HashMap<>();
+        this.removeAll();
         for (Vehicle vehicle : vehicles) {
             addVehicles(vehicle);
         }
@@ -43,6 +49,5 @@ public class DashboardPanel extends JPanel implements VehicleObserver, VehicleLi
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        vehicleUpdate();
     }
 }

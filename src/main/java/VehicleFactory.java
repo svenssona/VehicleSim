@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Class for creating objects. Hiding abstraction from the user.
@@ -9,7 +10,7 @@ import java.util.List;
 public class VehicleFactory implements IVehicleFactory {
 
     private final List<String> availableModels = new LinkedList<>(List.of("Saab95", "Volvo240", "Scania",
-            "NighCruiser420", "Transport6000"));
+            "NighCruiser420", "Transport6000", "Random"));
 
     public List<String> getAvailableModels() {
         return availableModels;
@@ -34,7 +35,12 @@ public class VehicleFactory implements IVehicleFactory {
             case "Transporter6000":
                 return new CarTransport<>(2, 555,  Color.black,"Transporter6000",
                         new Point2D.Double(0,0));
+            case "Random":
+                Random rand = new Random();
+                int randomIndex = rand.nextInt(availableModels.size());
+                return create(availableModels.get(randomIndex));
         }
-        throw new IllegalArgumentException("No such model in Factory, run getAvailableModels for all models available.");
+        throw new IllegalArgumentException("No such model: '" + modelName + "' in Factory, " +
+                "run getAvailableModels for all models available.");
     }
 }
