@@ -8,11 +8,12 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 // This panel represent the animated part of the view with the car images.
-public class DrawPanel extends JPanel {
+public class DrawPanel extends JPanel implements VehicleListener {
 
-    private final Map<Vehicle, BufferedImage> carImages = new HashMap<>();
+    private Map<Vehicle, BufferedImage> carImages = new HashMap<>();
 
     /**
      * Initializes the panel.
@@ -41,6 +42,13 @@ public class DrawPanel extends JPanel {
     // Helper method for when adding a car to the map, handles reading and loading.
     private BufferedImage getCarImage(String carName) throws IOException {
         return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
+    }
+
+    public void updateVehicles(List<Vehicle> vehicles) {
+        carImages = new HashMap<>();
+        for (Vehicle vehicle : vehicles) {
+            addCarImage(vehicle);
+        }
     }
 
     /**

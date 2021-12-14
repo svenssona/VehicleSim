@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -18,7 +20,7 @@ import javax.swing.SpinnerNumberModel;
  * It communicates with the Controller by calling methods of it when an action fires of in
  * each of its components.
  **/
-public class CarView extends JFrame implements VehicleObserver {
+public class CarView extends JFrame implements ActionListener {
     private static final int X = 800;
     private static final int Y = 800;
     private int gasAmount = 0;
@@ -113,7 +115,7 @@ public class CarView extends JFrame implements VehicleObserver {
      * Updates the observer if the publisher sends a signal and repaints the view.
      */
     @Override
-    public void vehicleUpdate() {
+    public void actionPreformed(ActionEvent e) {
         repaint();
     }
 }

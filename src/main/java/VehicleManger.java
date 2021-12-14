@@ -4,25 +4,24 @@ import java.awt.*;
 /**
  * This is a view that lets us add and remove vehicles through buttons in our GUI.
  */
-public class VehicleManger extends JPanel {
-    private final CarController carC;
-    private final VehicleFactory vehicleFactory;
-    private final CarView carView;
-    private final DashboardPanel dashboardPanel;
+public class VehicleManger extends JPanel implements VehicleListener {
 
-    public VehicleManger(VehicleFactory vehicleFactory, CarController carC, CarView carView, DashboardPanel dashboardPanel)  {
-        this.dashboardPanel = dashboardPanel;
-        this.carView = carView;
-        this.carC = carC;
+    private final VehicleFactory vehicleFactory;
+    private List<Vehicle> currentVehicles;
+    private Model model;
+    private JSpinner removeSpinner;
+
+    public VehicleManger(VehicleFactory vehicleFactory, Model model)  {
         this.vehicleFactory = vehicleFactory;
+        this.model = model;
         // A spinner with all available models that we can create in the vehicle factory.
         SpinnerModel availableVehicles = new SpinnerListModel(vehicleFactory.getAvailableModels());
         // availableVehicles.addChangeListener();
         JSpinner addSpinner = new JSpinner(availableVehicles);
         // A spinner with all the current Vehicles initialized.
-        SpinnerModel currentSpinner = new SpinnerListModel(carC.getCars());
+        SpinnerModel currentSpinner = new SpinnerListModel(model.getVehicles());
         // currentSpinner.addChangeListener();
-        JSpinner removeSpinner = new JSpinner(currentSpinner);
+        removeSpinner = new JSpinner(currentSpinner);
 
         this.setLayout(new GridBagLayout());
         // This is the visual representation of adding the vehicles.
@@ -41,21 +40,22 @@ public class VehicleManger extends JPanel {
         // This actionListener is for the add button only
         addButton.addActionListener(e -> addVehicle("Saab95"));
         // This actionListener is for the remove button only
-        removeButton.addActionListener(e -> removeVehicles());
+        removeButton.addActionListener(e -> removeVehicle("TODO"));
     }
 
     public void addVehicle(String modelName) {
-        Vehicle newCar = vehicleFactory.create(modelName);
-        carC.getCars().add(newCar);
-        carView.drawPanel.addCarImage(newCar);
-        newCar.addObserver(carView);
-        dashboardPanel.addVehicles(newCar);
-        carView.repaint();
+        Vehicle newVehicle = vehicleFactory.create(modelName);
+        model.addVehicle(newVehicle);
     }
 
-    public void removeVehicles() {
-        carC.getCars().remove(0);
-        carView.repaint();
+    public void removeVehicle(Vehicle vehicle) {
+        model.removeVehicle(vehicle);
+    }
+
+    @Override
+    public void updateVehicles(List<Vehicle> vehicles) {
+        SpinnerModel currentSpinner = new SpinnerListModel(model.getVehicles());
+        removeSpinner = new JSpinner(currentSpinner);
     }
 
     @Override

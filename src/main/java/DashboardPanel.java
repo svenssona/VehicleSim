@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 /** 
  * View that shows what vehicle is driving and shows the speed of the vehicle.
  */
-public class DashboardPanel extends JPanel implements VehicleObserver {
+public class DashboardPanel extends JPanel implements VehicleObserver, VehicleListener {
 
-    private final Map<Vehicle, JLabel> vehicleLabels = new HashMap<>();
+    private Map<Vehicle, JLabel> vehicleLabels = new HashMap<>();
 
     public void addVehicles(Vehicle vehicle) {
         String vehicleName = vehicle.getModelName();
@@ -29,6 +29,14 @@ public class DashboardPanel extends JPanel implements VehicleObserver {
             String vehicleName = vehicle.getModelName();
             double speed = vehicle.getCurrentSpeed();
             vehicleLabels.get(vehicle).setText(vehicleName + " : " + speed);
+        }
+    }
+
+    @Override
+    public void vehicleUpdate(List<Vehicle> vehicles) {
+        vehicleLabels = new HashMap<>();
+        for (Vehicle vehicle : vehicles) {
+            addVehicles(vehicle);
         }
     }
 

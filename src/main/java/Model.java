@@ -21,6 +21,7 @@ public class Model {
     public void removeVehicle(Vehicle vehicle) throws IllegalArgumentException {
         if (this.vehicles.contains(vehicle)) {
             vehicles.remove(vehicle);
+            this.notifyListeners();
         } else {
             throw new IllegalArgumentException();
         }
