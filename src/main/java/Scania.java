@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class Scania<T extends Loadable> extends Vehicle implements Car, HasBed {
     // TODO Make SCANIA GREAT AGAIN: MAKING IT LOADABLE

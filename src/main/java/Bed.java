@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
- * @version 1.0.0
+ * @version 2.0.0
  */
 class Bed <T extends Loadable> {
 

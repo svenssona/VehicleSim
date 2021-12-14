@@ -4,6 +4,10 @@ import java.awt.geom.Point2D;
 /**
  * Creates a car ferry that can load cars onto it and then transport them.
  * @param <T> Can either load all loadable objects or a specific type of loadable objects.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  */
 public class Ferry<T extends LoadableCar> extends CarTransport<T> {
     /**

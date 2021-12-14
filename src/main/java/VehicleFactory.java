@@ -6,12 +6,20 @@ import java.util.Random;
 
 /**
  * Class for creating objects. Hiding abstraction from the user.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  */
 public class VehicleFactory implements IVehicleFactory {
 
     private final List<String> availableModels = new LinkedList<>(List.of("Saab95", "Volvo240", "Scania",
             "NightCruiser420", "Transporter6000", "Random"));
 
+    /**
+     * Returns a list with all the available models for creation in our factory.
+     * @return Returns a list with all the available models for creation in our factory.
+     */
     public List<String> getAvailableModels() {
         return availableModels;
     }

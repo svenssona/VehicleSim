@@ -1,17 +1,15 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.lang.IllegalArgumentException;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * This is an abstract class defining the basic functions of a vehicle.
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
- * @version 1.0.0
+ * @version 2.0.0
  */
-abstract class Vehicle implements Moveable {
+public abstract class Vehicle implements Moveable {
 
     /**
      * Parameters defining the cars characterises and initial states.

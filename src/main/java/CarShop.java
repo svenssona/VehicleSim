@@ -5,11 +5,15 @@ import java.util.NoSuchElementException;
 /**
  * This class handles all the repairs of a broken car.
  * @param <T> The car shop can either take all different brands of cars or a specific brand.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  */
 public class CarShop <T extends Car> {
     
-    private List<T> carsInShop;
-    private int capacity;
+    private final List<T> carsInShop;
+    private final int capacity;
 
     /**
      * Constuct a car shop that can service maxNumberCars of cars at once.

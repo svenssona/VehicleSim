@@ -1,16 +1,24 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridBagLayout;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.JButton;
+import javax.swing.SpinnerListModel;
 
 /**
  * This is a view that lets us add and remove vehicles through buttons in our GUI.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  */
 public class VehicleManger extends JPanel {
 
     private final VehicleFactory vehicleFactory;
     private final Model model;
     private Vehicle selectedCar;
-    JSpinner removeSpinner;
-    SpinnerListModel currentSpinner;
+    private final SpinnerListModel currentSpinner;
 
     public VehicleManger(VehicleFactory vehicleFactory, Model model)  {
         this.vehicleFactory = vehicleFactory;
@@ -22,7 +30,7 @@ public class VehicleManger extends JPanel {
         JSpinner addSpinner = new JSpinner(availableVehicles);
         // A spinner with all the current Vehicles initialized.
         currentSpinner = new SpinnerListModel(model.getVehicles());
-        removeSpinner = new JSpinner(currentSpinner);
+        JSpinner removeSpinner = new JSpinner(currentSpinner);
         removeSpinner.addChangeListener(e -> selectedCar = (Vehicle) ((JSpinner) e.getSource()).getValue());
         // This is the visual representation of adding the vehicles.
         JButton addButton = new JButton("Add vehicle ");
@@ -39,19 +47,29 @@ public class VehicleManger extends JPanel {
         removeButton.addActionListener(e -> removeVehicle(selectedCar));
     }
 
+    /**
+     * Creates a new vehicle according to user input, and adds it to the model + updates the spinner.
+     * @param modelName The model name of the vehicle that you want to add.
+     */
     public void addVehicle(String modelName) {
         Vehicle newVehicle = vehicleFactory.create(modelName);
         model.addVehicle(newVehicle);
         currentSpinner.setList(model.getVehicles());
     }
 
+    /**
+     * Removes a specific vehicle according to user input and updates the spinner.
+     * @param vehicle The specific vehicle that you want to remove.
+     */
     public void removeVehicle(Vehicle vehicle) {
         model.removeVehicle(vehicle);
         currentSpinner.setList(model.getVehicles());
     }
 
+    /**
+     * This method is called each time the panel updates/refreshes/repaints itself.
+     * @param g Graphical component on which we draw.
+     */
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    }
+    protected void paintComponent(Graphics g) { super.paintComponent(g); }
 }

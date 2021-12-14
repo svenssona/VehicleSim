@@ -10,7 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-// This panel represent the animated part of the view with the car images.
+/**
+ * This panel represent the animated part of the view with the car images.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
+ */
 public class DrawPanel extends JPanel implements VehicleListener {
 
     private Map<Vehicle, BufferedImage> carImages = new HashMap<>();
@@ -44,6 +50,10 @@ public class DrawPanel extends JPanel implements VehicleListener {
         return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
     }
 
+    /**
+     * Creates a new Map when it gets called from the Model which it is subscribed to.
+     * @param vehicles The new list of vehicles that exist in our model.
+     */
     public void updateVehicles(List<Vehicle> vehicles) {
         carImages = new HashMap<>();
         for (Vehicle vehicle : vehicles) {

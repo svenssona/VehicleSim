@@ -8,6 +8,10 @@ import java.util.List;
 * This class represents the Controller part in the MVC pattern.
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  */
 public class CarController implements ActionListener, VehicleListener {
 
@@ -15,7 +19,6 @@ public class CarController implements ActionListener, VehicleListener {
 
     /**
      * Updates the internal vehicle list.
-     * @return Returns the list of cars in the CarController.
      */
     public void updateVehicles(List<Vehicle> vehicles) {
         cars = vehicles;
@@ -125,7 +128,7 @@ public class CarController implements ActionListener, VehicleListener {
      */
     void startAllCars() {
         for (Vehicle car : cars) {
-            car.startEngine();
+            car.gas(0.5);
         }
     }
 

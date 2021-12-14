@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class CarTransport<T extends LoadableCar> extends Vehicle implements HasBed {
 
@@ -27,6 +27,7 @@ public class CarTransport<T extends LoadableCar> extends Vehicle implements HasB
     public CarTransport(int nrDoors, double enginePower, Color color, String modelName, Point2D point) {
         super(nrDoors, enginePower, color, modelName, point);
         this.bed = new Bed<>(maxAngle, capacity, minAngle);
+        this.bed.raiseBed(maxAngle);
     }
 
     //  Methods for handling the (un)loading of the cars from the car transport.
@@ -124,6 +125,7 @@ public class CarTransport<T extends LoadableCar> extends Vehicle implements HasB
      */
     @Override
     public void gas(double amount) {
+        System.out.println(this.bed.getBedAngle());
         if (this.bed.getBedAngle() == CarTransport.maxAngle) {
             super.gas(amount);
         }

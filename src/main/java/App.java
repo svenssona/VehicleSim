@@ -1,5 +1,12 @@
 import javax.swing.Timer;
 
+/**
+ * Car Simulator Application
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
+ */
 public class App {
 
     public static void main(String[] args) {
@@ -13,11 +20,11 @@ public class App {
         model.addVehicle(vehicleFactory.create("Volvo240"));
         model.addVehicle(vehicleFactory.create("Saab95"));
         model.addVehicle(vehicleFactory.create("Scania"));
-        // Start a new view and send a reference of self
-        CarView frame = new CarView("CarSim 1.0", cc, drawPanel);
+        // Start a new view and send a reference of the CarController and drawPanel.
+        CarView frame = new CarView("CarSim 2.0", cc, drawPanel);
         DashboardPanel dashboard = new DashboardPanel();
         VehicleManger vehicleManger = new VehicleManger(vehicleFactory, model);
-        //  Adds a buffered image for each car to the panel and subscribes the view as listener to our model.
+
         frame.add(dashboard);
         frame.add(vehicleManger);
 

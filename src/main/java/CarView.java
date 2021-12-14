@@ -19,18 +19,20 @@ import javax.swing.SpinnerNumberModel;
  * It initializes with being center on the screen and attaching its controller in its state.
  * It communicates with the Controller by calling methods of it when an action fires of in
  * each of its components.
+ * @author Richard Svensson
+ * @author Victor Salomonsson
+ * @author Leo Ånestrand
+ * @version 2.0.0
  **/
 public class CarView extends JFrame implements ActionListener {
     private static final int X = 800;
     private static final int Y = 800;
     private int gasAmount = 0;
-
-    CarController carC;  // The controller member that we need to call when an action is performed.
-    DrawPanel drawPanel;
-    JPanel controlPanel = new JPanel();
-    JPanel gasPanel = new JPanel();
-    JLabel gasLabel = new JLabel("Amount of gas");
-    JSpinner gasSpinner;
+    private final CarController carC;  // The controller member that we need to call when an action is performed.
+    private final DrawPanel drawPanel;
+    private final JPanel controlPanel = new JPanel();
+    private final JPanel gasPanel = new JPanel();
+    private final JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -55,7 +57,7 @@ public class CarView extends JFrame implements ActionListener {
         this.add(drawPanel);
 
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
-        gasSpinner = new JSpinner(spinnerModel);
+        JSpinner gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(e -> gasAmount = (int) ((JSpinner)e.getSource()).getValue());
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
