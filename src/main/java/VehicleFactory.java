@@ -10,7 +10,7 @@ import java.util.Random;
 public class VehicleFactory implements IVehicleFactory {
 
     private final List<String> availableModels = new LinkedList<>(List.of("Saab95", "Volvo240", "Scania",
-            "NighCruiser420", "Transport6000", "Random"));
+            "NightCruiser420", "Transporter6000", "Random"));
 
     public List<String> getAvailableModels() {
         return availableModels;
@@ -34,7 +34,7 @@ public class VehicleFactory implements IVehicleFactory {
                 return new Ferry<>();
             case "Transporter6000":
                 return new CarTransport<>(2, 555,  Color.black,"Transporter6000",
-                        new Point2D.Double(0,0));
+                        new Point2D.Double(300,0));
             case "Random":
                 Random rand = new Random();
                 int randomIndex = rand.nextInt(availableModels.size());

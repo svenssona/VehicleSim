@@ -16,6 +16,7 @@ public class VehicleManger extends JPanel {
         this.vehicleFactory = vehicleFactory;
         this.model = model;
         this.setLayout(new GridBagLayout());
+        selectedCar = model.getVehicles().get(0);
         // A spinner with all available models that we can create in the vehicle factory.
         SpinnerModel availableVehicles = new SpinnerListModel(vehicleFactory.getAvailableModels());
         JSpinner addSpinner = new JSpinner(availableVehicles);
@@ -41,6 +42,7 @@ public class VehicleManger extends JPanel {
     public void addVehicle(String modelName) {
         Vehicle newVehicle = vehicleFactory.create(modelName);
         model.addVehicle(newVehicle);
+        currentSpinner.setList(model.getVehicles());
     }
 
     public void removeVehicle(Vehicle vehicle) {

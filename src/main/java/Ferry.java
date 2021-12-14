@@ -11,7 +11,7 @@ public class Ferry<T extends LoadableCar> extends CarTransport<T> {
      */
     public Ferry() {
         super(1, 1000, Color.black, "NightCruiser420",
-                new Point2D.Double(0,0));
+                new Point2D.Double(400,0));
     }
 
     /**

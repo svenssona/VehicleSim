@@ -28,7 +28,7 @@ public class Model {
         }
     }
 
-    public void notifyListeners(){
+    private void notifyListeners() {
         for (VehicleListener listener : listeners) {
             listener.updateVehicles(this.vehicles);
         }
