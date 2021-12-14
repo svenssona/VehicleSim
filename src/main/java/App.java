@@ -24,9 +24,6 @@ public class App {
         model.addListener(cc);
         model.addListener(dashboard);
         model.addListener(drawPanel);
-        model.addListener(vehicleManger);
-
-        model.notifyListeners();
 
         int delay = 10;
         Timer timer = new Timer(delay, cc);

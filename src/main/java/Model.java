@@ -2,11 +2,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Model {
-    private List<Vehicle> vehicles = new ArrayList<>();
-    private List<VehicleListener> listeners = new ArrayList<>();
+    private final List<Vehicle> vehicles = new ArrayList<>();
+    private final List<VehicleListener> listeners = new ArrayList<>();
 
     public List<Vehicle> getVehicles() {
-        return vehicles;
+        return new ArrayList<>(vehicles);
     }
 
     public void addListener(VehicleListener listener) {
