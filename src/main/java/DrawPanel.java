@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.List;
 
 /**
- * This panel represent the animated part of the view with the car images.
+ * This panel represent the animated part of the view with the vehicle images.
  * @author Richard Svensson
  * @author Victor Salomonsson
  * @author Leo Ånestrand
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DrawPanel extends JPanel implements VehicleListener {
 
-    private Map<Vehicle, BufferedImage> carImages = new HashMap<>();
+    private Map<Vehicle, BufferedImage> vehicleImages = new HashMap<>();
 
     /**
      * Initializes the panel.
@@ -34,18 +34,18 @@ public class DrawPanel extends JPanel implements VehicleListener {
 
     /**
      * Adds a given vehicle to the map of all images.
-     * @param car The new vehicle image that you want to add.
+     * @param vehicle The new vehicle image that you want to add.
      */
-    public void addCarImage(Vehicle car) {
+    public void addCarImage(final Vehicle vehicle) {
         // Prints a stack tree message in case file is not found in the try block.
         try {
-            BufferedImage carImage = getCarImage(car.getModelName());
-            carImages.put(car, carImage);
+            BufferedImage carImage = getCarImage(vehicle.getModelName());
+            vehicleImages.put(vehicle, carImage);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-    // Helper method for when adding a car to the map, handles reading and loading.
+    // Helper method for when adding a vehicle to the map, handles reading and loading.
     private BufferedImage getCarImage(String carName) throws IOException {
         return ImageIO.read(DrawPanel.class.getResourceAsStream(carName + ".jpg"));
     }
@@ -54,8 +54,8 @@ public class DrawPanel extends JPanel implements VehicleListener {
      * Creates a new Map when it gets called from the Model which it is subscribed to.
      * @param vehicles The new list of vehicles that exist in our model.
      */
-    public void updateVehicles(List<Vehicle> vehicles) {
-        carImages = new HashMap<>();
+    public void updateVehicles(final List<Vehicle> vehicles) {
+        vehicleImages = new HashMap<>();
         for (Vehicle vehicle : vehicles) {
             addCarImage(vehicle);
         }
@@ -68,11 +68,11 @@ public class DrawPanel extends JPanel implements VehicleListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Vehicle car : carImages.keySet())  {
-            Point2D carPoint = car.getPosition();
+        for (Vehicle vehicle : vehicleImages.keySet())  {
+            Point2D vehiclePoint = vehicle.getPosition();
             // See javadoc for more info on the parameters.
-            g.drawImage(carImages.get(car), (int) Math.round(carPoint.getX()),
-                    (int) Math.round(carPoint.getY()), null);
+            g.drawImage(vehicleImages.get(vehicle), (int) Math.round(vehiclePoint.getX()),
+                    (int) Math.round(vehiclePoint.getY()), null);
         }
     }
 }

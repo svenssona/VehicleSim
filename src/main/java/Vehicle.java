@@ -1,4 +1,4 @@
-import java.awt.Color;
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.lang.IllegalArgumentException;
 
@@ -18,7 +18,7 @@ public abstract class Vehicle implements Moveable {
     private final double enginePower; // Engine power of the vehicle.
     private double currentSpeed; // The current speed of the vehicle.
     private Color color; // Color of the vehicle.
-    private String modelName; // The vehicle model name.
+    private final String modelName; // The vehicle model name.
     private Point2D position; // Holds (x,y) position of the vehicle.
     private Direction direction; // Direction value of the vehicle, North = 0, West = 1, South = 2, East = 3.
     
@@ -116,7 +116,7 @@ public abstract class Vehicle implements Moveable {
         }
     }
 
-    // Moves the specified point by dx and dy in x and y direction respectivly.
+    // Moves the specified point by dx and dy in x and y direction respectively.
     private void translate(Point2D position, double dx, double dy) {
         position.setLocation(position.getX() + dx, position.getY() + dy);
     }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @author Leo Ånestrand
  * @version 2.0.0
  */
-class Bed <T extends Loadable> {
+final class Bed <T extends Loadable> {
 
     private double bedAngle = 0;
     private final double maxAngle;
@@ -20,8 +20,12 @@ class Bed <T extends Loadable> {
      * Creates a bed with specified max angle in the interval [0, maxAngle].
      * @param maxAngle Max angle for the specific bed.
      * @param capacity Max capacity for the specific bed.
+     * @throws IllegalArgumentException If given a negative capacity.
      */
-    public Bed(double maxAngle, int capacity) {
+    public Bed(double maxAngle, int capacity) throws IllegalArgumentException {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Can't have a negative bed capacity.");
+        }
         this.maxAngle = maxAngle;
         this.capacity = capacity;
         minAngle = 0;
@@ -33,8 +37,12 @@ class Bed <T extends Loadable> {
      * @param maxAngle Max angle for the specific bed.
      * @param capacity Max capacity for the specific bed.
      * @param minAngle Min angle for the specific bed.
+     * @throws IllegalArgumentException If given a negative capacity.
      */
     public Bed(double maxAngle, int capacity, double minAngle ) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Can't have a negative capacity.");
+        }
         this.maxAngle = maxAngle;
         this.capacity = capacity;
         this.minAngle = minAngle;

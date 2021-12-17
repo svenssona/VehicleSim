@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 2.0.0
  */
-public class Scania<T extends Loadable> extends Vehicle implements Car, HasBed {
+public final class Scania<T extends Loadable> extends Vehicle implements Car, HasBed {
     // TODO Make SCANIA GREAT AGAIN: MAKING IT LOADABLE
 
     private final static double trimFactor = 1.5;

@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 2.0.0
  */
-public class Saab95 extends Vehicle implements LoadableCar, HasTurbo {
+public final class Saab95 extends Vehicle implements LoadableCar, HasTurbo {
 
     private boolean turboOn;
     private boolean isLoaded;

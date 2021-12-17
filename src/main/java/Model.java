@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Leo Ånestrand
  * @version 2.0.0
  */
-public class Model {
+public final class Model {
     private final List<Vehicle> vehicles = new ArrayList<>();
     private final List<VehicleListener> listeners = new ArrayList<>();
 

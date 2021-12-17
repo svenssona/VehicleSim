@@ -25,7 +25,7 @@ public class DashboardPanel extends JPanel implements ActionListener, VehicleLis
      * Adds a vehicle to our dashboard panel.
      * @param vehicle The new vehicle that we want to show.
      */
-    public void addVehicles(Vehicle vehicle) {
+    public void addVehicles(final Vehicle vehicle) {
         String vehicleName = vehicle.getModelName();
         double speed = vehicle.getCurrentSpeed();
         JLabel newLabel = new JLabel(vehicleName + " : " + speed);
@@ -55,7 +55,7 @@ public class DashboardPanel extends JPanel implements ActionListener, VehicleLis
      * @param vehicles The new list of vehicles that exist in our model.
      */
     @Override
-    public void updateVehicles(List<Vehicle> vehicles) {
+    public void updateVehicles(final List<Vehicle> vehicles) {
         vehicleLabels = new HashMap<>();
         this.removeAll();
         for (Vehicle vehicle : vehicles) {

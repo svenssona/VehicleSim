@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
  * @author Leo Ånestrand
  * @version 2.0.0
  */
-public class Volvo240 extends Vehicle implements LoadableCar {
+public final class Volvo240 extends Vehicle implements LoadableCar {
 
     private final static double trimFactor = 1.25;
     private boolean isLoaded;

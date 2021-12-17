@@ -47,11 +47,9 @@ public class CarShop <T extends Car> {
     }
 
     /**
-     * @return Returns a list with all the cars in the shop.
+     * @return Returns a defensive copy of the list with all the cars in the shop.
      */
-    public List<T> getCarsInShop() {
-        return carsInShop;
-    }
+    public List<T> getCarsInShop() { return new ArrayList<>(carsInShop); }
 
     /**
      * Repair cars.

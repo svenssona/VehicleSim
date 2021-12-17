@@ -20,9 +20,7 @@ public class VehicleFactory implements IVehicleFactory {
      * Returns a list with all the available models for creation in our factory.
      * @return Returns a list with all the available models for creation in our factory.
      */
-    public List<String> getAvailableModels() {
-        return availableModels;
-    }
+    public List<String> getAvailableModels() { return new LinkedList<>(availableModels); }
 
     /**
      * Creates a vehicle object given an input argument string matching available models.

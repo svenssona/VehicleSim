@@ -10,6 +10,8 @@ class CarShopTest {
         carShop.intoService(new Volvo240());
         carShop.intoService(new Saab95());
         assertEquals(2, carShop.getCarsInShop().size());
+        carShop.getCarsInShop().remove(0);
+        assertEquals(2, carShop.getCarsInShop().size());
     }
 
     @Test
