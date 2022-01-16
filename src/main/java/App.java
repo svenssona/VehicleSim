@@ -32,7 +32,7 @@ public class App {
         model.addListener(dashboard);
         model.addListener(drawPanel);
 
-        int delay = 10;
+        int delay = 11;
         Timer timer = new Timer(delay, cc);
         timer.addActionListener(frame);
         timer.addActionListener(dashboard);
